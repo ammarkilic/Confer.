@@ -696,6 +696,7 @@ export default function ConferFlatDesign() {
                 const style = retroStyles[index % retroStyles.length];
                 const status = getDeadlineStatus(conf.deadline);
                 const daysLeft = getRemainingDays(conf.deadline);
+                const isTrialCard = ['eisa-pec-2026', 'esg-2026', 'msa-forward-2026'].includes(conf.id);
 
                 return (
                   <div 
@@ -717,8 +718,10 @@ export default function ConferFlatDesign() {
                     <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
-                        : 'translate-y-[32px] group-hover:translate-y-1.5'
-                    }`} style={{ height: '175px' }}>
+                        : isTrialCard
+                          ? 'translate-y-[16px] group-hover:translate-y-1.5'
+                          : 'translate-y-[32px] group-hover:translate-y-1.5'
+                    }`} style={{ height: isTrialCard ? '178px' : '175px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli) */}
                       <div className="absolute top-4 right-4 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 transform rotate-3 select-none flex items-center justify-center shrink-0">
@@ -767,7 +770,7 @@ export default function ConferFlatDesign() {
                         </div>
                         
                         {/* BAŞLIK */}
-                        <h2 className="text-base leading-snug tracking-tight text-[#2a2421] font-fira-semibold pr-2 truncate-2-lines">
+                        <h2 className="text-base leading-snug tracking-tight text-[#2a2421] font-fira-semibold pr-2 line-clamp-2">
                           {conf.title}
                         </h2>
                         {/* ORGANİZATÖR */}
