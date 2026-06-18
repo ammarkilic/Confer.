@@ -703,7 +703,7 @@ export default function ConferFlatDesign() {
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
-                        ? 'translate-y-[-50px] duration-300 ease-out' 
+                        ? 'translate-y-[-30px] duration-300 ease-out' 
                         : 'translate-y-[-16px] group-hover:translate-y-[-24px] duration-300 ease-out'
                     }`} style={{ height: '178px' }}>
                       
@@ -777,7 +777,9 @@ export default function ConferFlatDesign() {
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-4px_12px_rgba(42,36,33,0.08)]`}>
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-4px_12px_rgba(42,36,33,0.08)] transition-transform duration-300 ease-out ${
+                      openingCardId === conf.id ? 'translate-y-[12px]' : 'translate-y-0'
+                    }`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
