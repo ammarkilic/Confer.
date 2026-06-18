@@ -774,14 +774,14 @@ export default function ConferFlatDesign() {
                           {conf.title}
                         </h2>
                         {/* ORGANİZATÖR */}
-                        <p className="text-[10px] font-fira-light opacity-70 mt-1 text-[#2a2421] truncate">
+                        <p className={`text-[10px] font-fira-light opacity-70 text-[#2a2421] truncate ${isTrialCard ? 'mt-0' : 'mt-1'}`}>
                           {conf.organizer}
                         </p>
                       </div>
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[48%] ${style.cardBg} border-t ${style.border} rounded-b-[2rem] z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-[2rem] z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
