@@ -178,44 +178,14 @@ export default function ConferFlatDesign() {
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${encodeURIComponent(loc)}`;
   };
 
-  const retroStyles = [
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#f3effa]", 
-      border: "border-[#d0bdf4]/40", 
-      text: "text-[#4b357a]", 
-      tagBg: "bg-[#d0bdf4]/25 text-[#4b357a]"
-    },
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#fff0f3]", 
-      border: "border-[#ff9ab3]/40", 
-      text: "text-[#7c253e]", 
-      tagBg: "bg-[#ff9ab3]/25 text-[#7c253e]"
-    },
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#f4f7ef]", 
-      border: "border-[#d5e6b5]/50", 
-      text: "text-[#3e4f20]", 
-      tagBg: "bg-[#d5e6b5]/35 text-[#3e4f20]"
-    },
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#fffbeb]", 
-      border: "border-[#ffe270]/40", 
-      text: "text-[#665500]", 
-      tagBg: "bg-[#ffe270]/30 text-[#665500]"
-    },
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#fff5ed]", 
-      border: "border-[#ffb680]/35", 
-      text: "text-[#7a3b00]", 
-      tagBg: "bg-[#ffb680]/25 text-[#7a3b00]"
-    },
-    { 
-      cardBg: "bg-gradient-to-br from-white via-[#fcfbfa] to-[#f0f7ff]", 
-      border: "border-[#bad5e8]/45", 
-      text: "text-[#203c53]", 
-      tagBg: "bg-[#bad5e8]/30 text-[#203c53]"
-    }
-  ];
+  const elegantStyle = {
+    cardBg: "bg-gradient-to-br from-white via-[#faf9f6] to-[#e8e2d5]",
+    border: "border-[#cfc6b5]/50",
+    text: "text-[#5c5043]",
+    tagBg: "bg-[#e8e2d5]/45 text-[#5c5043]"
+  };
+
+  const retroStyles = Array(6).fill(elegantStyle);
 
   // Calendar Calculations
   const year = currentDate.getFullYear();
