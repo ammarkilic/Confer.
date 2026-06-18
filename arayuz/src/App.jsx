@@ -701,9 +701,9 @@ export default function ConferFlatDesign() {
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
-                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-t-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
+                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
-                        ? 'translate-y-[-90px] scale-[1.02] duration-500 ease-out' 
+                        ? 'paper-jump-active' 
                         : 'translate-y-[-16px] group-hover:translate-y-[-24px] duration-300 ease-out'
                     }`} style={{ height: '178px' }}>
                       
