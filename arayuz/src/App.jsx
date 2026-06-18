@@ -665,8 +665,6 @@ export default function ConferFlatDesign() {
                             }
                           }}
                         />
-                        {/* Ink Postmark Overlay */}
-                        <div className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full border border-black/15 border-dashed pointer-events-none opacity-45 transform -rotate-12" />
                         <div className="absolute inset-0 border border-black/5" />
 
                         {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
