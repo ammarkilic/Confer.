@@ -177,10 +177,10 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Kategori A Üyeleri (Yüksek Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
-          { cat: "Kategori B Üyeleri (Orta-Yüksek Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
-          { cat: "Kategori C Üyeleri (Düşük/Orta-Düşük Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
-          { cat: "Üye Olmayanlar", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Kategori A Üyeleri (Yüksek Gelir)", early: "Belirlenmedi", late: "Belirlenmedi" },
+          { cat: "Kategori B Üyeleri (Orta-Yüksek Gelir)", early: "Belirlenmedi", late: "Belirlenmedi" },
+          { cat: "Kategori C Üyeleri (Düşük/Orta-Düşük Gelir)", early: "Belirlenmedi", late: "Belirlenmedi" },
+          { cat: "Üye Olmayanlar", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Category A Members (High Income)", early: "NA", late: "NA" },
@@ -265,7 +265,7 @@ export const conferences = [
         tr: [
           { cat: "APA Üyeleri (Yüz Yüze + Sanal)", early: "450 $", late: "650 $" },
           { cat: "APA Üyeleri (Sadece Sanal)", early: "190 $", late: "190 $" },
-          { cat: "Üye Olmayanlar", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Üye Olmayanlar", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "APA Members (All Access)", early: "$450", late: "$650" },
@@ -352,7 +352,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Ücretler", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
@@ -587,7 +587,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Ücretler", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
@@ -665,8 +665,8 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "EISA Üyeleri", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
-          { cat: "Üye Olmayanlar", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "EISA Üyeleri", early: "Belirlenmedi", late: "Belirlenmedi" },
+          { cat: "Üye Olmayanlar", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "EISA Members", early: "NA", late: "NA" },
@@ -1063,7 +1063,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Ücretler", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
@@ -1132,7 +1132,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Ücretler", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
@@ -1203,7 +1203,7 @@ export const conferences = [
         tr: [
           { cat: "Üyeler (Düşük/Orta/Yüksek Gelir)", early: "240 € / 295 € / 320 €", late: "340 € / 395 € / 420 €" },
           { cat: "Üye Olmayanlar (Düşük/Orta/Yüksek Gelir)", early: "308 € / 418 € / 474 €", late: "408 € / 518 € / 574 €" },
-          { cat: "Online Üyeler (Düşük/Orta/Yüksek)", early: "120 € / 140 € / 170 €", late: "Tarih belirlenmedi" }
+          { cat: "Online Üyeler (Düşük/Orta/Yüksek)", early: "120 € / 140 € / 170 €", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Members (Low/Medium/High Income)", early: "€240 / €295 / €320", late: "€340 / €395 / €420" },
@@ -1516,7 +1516,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Kayıt Ücretleri", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Kayıt Ücretleri", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Registration Fees", early: "NA", late: "NA" }
@@ -1743,7 +1743,7 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Kayıt Ücretleri", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Kayıt Ücretleri", early: "Belirlenmedi", late: "Belirlenmedi" }
         ],
         en: [
           { cat: "Registration Fees", early: "NA", late: "NA" }

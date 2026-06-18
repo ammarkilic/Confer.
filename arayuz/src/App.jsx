@@ -51,7 +51,6 @@ export default function ConferFlatDesign() {
   });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [showOpenOnly, setShowOpenOnly] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
   const [activeTab, setActiveTab] = useState("cfp");
   const [openingCardId, setOpeningCardId] = useState(null);
   
@@ -301,26 +300,13 @@ export default function ConferFlatDesign() {
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
-          {/* Dashboard Toggle Button */}
-          <button 
-            onClick={() => setShowDashboard(!showDashboard)}
-            className={`p-2.5 rounded-full transition-all duration-300 border shadow-sm flex items-center gap-2 text-sm font-fira-semibold ${
-              showDashboard 
-                ? 'bg-[#2a2421] text-white border-[#2a2421]' 
-                : 'bg-white hover:bg-black/5 text-[#5a5451] border-black/5'
-            }`}
-            title={t[lang].toggleStats}
-          >
-            <span>📊</span> <span className="hidden sm:inline">{t[lang].toggleStats}</span>
-          </button>
-
           {/* View Mode Selector */}
-          <div className="flex bg-white rounded-full p-1 shadow-sm border border-black/5">
+          <div className="flex bg-white rounded-full p-0.5 shadow-sm border border-black/5">
             <button 
               onClick={() => setViewMode('list')} 
-              className={`px-5 py-2.5 rounded-full text-sm font-fira-semibold transition-all duration-300 ${
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                 viewMode === 'list' 
-                  ? 'bg-[#2a2421] text-white shadow-md' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
                   : 'bg-transparent text-[#5a5451] hover:bg-black/5'
               }`}
             >
@@ -328,9 +314,9 @@ export default function ConferFlatDesign() {
             </button>
             <button 
               onClick={() => setViewMode('calendar')} 
-              className={`px-5 py-2.5 rounded-full text-sm font-fira-semibold transition-all duration-300 ${
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                 viewMode === 'calendar' 
-                  ? 'bg-[#2a2421] text-white shadow-md' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
                   : 'bg-transparent text-[#5a5451] hover:bg-black/5'
               }`}
             >
@@ -339,12 +325,12 @@ export default function ConferFlatDesign() {
           </div>
 
           {/* Language Selector */}
-          <div className="flex bg-white rounded-full p-1 shadow-sm border border-black/5">
+          <div className="flex bg-white rounded-full p-0.5 shadow-sm border border-black/5">
             <button 
               onClick={() => { setLang('tr'); setSelectedTags([]); setSelectedRegions([]); }} 
-              className={`px-5 py-2.5 rounded-full text-sm font-fira-semibold transition-all duration-300 ${
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                 lang === 'tr' 
-                  ? 'bg-[#2a2421] text-white shadow-md' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
                   : 'bg-transparent text-[#5a5451] hover:bg-black/5'
               }`}
             >
@@ -352,9 +338,9 @@ export default function ConferFlatDesign() {
             </button>
             <button 
               onClick={() => { setLang('en'); setSelectedTags([]); setSelectedRegions([]); }} 
-              className={`px-5 py-2.5 rounded-full text-sm font-fira-semibold transition-all duration-300 ${
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                 lang === 'en' 
-                  ? 'bg-[#2a2421] text-white shadow-md' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
                   : 'bg-transparent text-[#5a5451] hover:bg-black/5'
               }`}
             >
@@ -363,58 +349,6 @@ export default function ConferFlatDesign() {
           </div>
         </div>
       </header>
-
-      {/* Collapsible Dashboard Container */}
-      <div className={`max-w-7xl mx-auto overflow-hidden transition-all duration-300 ease-in-out ${showDashboard ? 'max-h-[500px] mb-8 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-        <div className="rounded-[2.5rem] p-6 sm:p-8 border border-black/5 shadow-md bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2] text-[#2a2421]">
-          <h2 className="text-xl font-bold tracking-tight mb-6 flex items-center gap-2 text-[#2a2421] font-fira-regular">
-            <span>📊</span> {t[lang].dashboardTitle}
-          </h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Metric 1: Total Conferences */}
-            <div className="rounded-3xl p-5 border border-black/5 bg-white shadow-sm">
-              <p className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-1.5 font-fira-regular">{t[lang].totalConferences}</p>
-              <p className="text-4xl font-semibold font-fira-regular text-stone-950">{conferences.length}</p>
-            </div>
-            
-            {/* Metric 2: Open CFPs */}
-            <div className="rounded-3xl p-5 border border-black/5 bg-white shadow-sm">
-              <p className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-1.5 font-fira-regular">{t[lang].openCfps}</p>
-              <p className="text-4xl font-semibold font-fira-regular text-emerald-800">
-                {conferences.filter(c => getRemainingDays(c.deadline) >= 0).length}
-              </p>
-            </div>
-            
-            {/* Metric 3: Grants Available */}
-            <div className="rounded-3xl p-5 border border-black/5 bg-white shadow-sm">
-              <p className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-1.5 font-fira-regular">{t[lang].grantsAvailable}</p>
-              <p className="text-4xl font-semibold font-fira-regular text-violet-800">
-                {conferences.filter(c => c.grants).length}
-              </p>
-            </div>
-            
-            {/* Metric 4: Regions distribution */}
-            <div className="rounded-3xl p-5 border border-black/5 bg-white shadow-sm">
-              <p className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-1.5 font-fira-regular">{t[lang].regions}</p>
-              <div className="space-y-1.5 max-h-[100px] overflow-y-auto custom-scrollbar font-sans">
-                {Object.entries(
-                  conferences.reduce((acc, c) => {
-                    const reg = lang === 'tr' ? c.region : c.regionEn;
-                    acc[reg] = (acc[reg] || 0) + 1;
-                    return acc;
-                  }, {})
-                ).map(([regionName, count]) => (
-                  <div key={regionName} className="flex justify-between items-center text-xs">
-                    <span className="font-semibold truncate pr-2">{regionName}</span>
-                    <span className="font-bold opacity-75 shrink-0 bg-black/5 px-2 py-0.5 rounded-full">{count}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* ANA GRID DÜZENİ */}
       <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
@@ -440,7 +374,7 @@ export default function ConferFlatDesign() {
                     setShowFavoritesOnly(false);
                     setShowOpenOnly(false);
                   }}
-                  className="text-xs font-semibold font-fira-regular transition-colors px-3 py-1.5 rounded-full shadow-sm whitespace-nowrap shrink-0 border bg-white text-[#ff9ab3] hover:text-[#e07b94] border-[#ff9ab3]/20 hover:border-[#ff9ab3]/40"
+                  className="text-[10px] font-semibold font-fira-regular transition-colors px-2 py-1 rounded-full shadow-xs whitespace-nowrap shrink-0 border bg-white text-[#ff9ab3] hover:text-[#e07b94] border-[#ff9ab3]/20 hover:border-[#ff9ab3]/40"
                 >
                   {lang === 'tr' ? 'Temizle' : 'Clear'}
                 </button>
@@ -568,21 +502,21 @@ export default function ConferFlatDesign() {
             /* TAKVİM GÖRÜNÜMÜ */
             <div className="w-full font-fira-regular">
               {/* Takvim Kontrol Menüsü */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-6 bg-white border border-black/5 p-4 rounded-3xl shadow-sm">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-white border border-black/5 p-2 rounded-2xl shadow-sm">
+                <div className="flex items-center gap-2">
                   <button 
                     onClick={handlePrevMonth}
-                    className="w-10 h-10 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-sm transition-colors text-lg font-bold"
+                    className="w-8 h-8 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-xs transition-colors text-sm font-bold"
                     title={t[lang].prevMonth}
                   >
                     ‹
                   </button>
                   
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <select 
                       value={month} 
                       onChange={(e) => setCurrentDate(new Date(year, parseInt(e.target.value), 1))}
-                      className="select-custom bg-transparent border-none text-base font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-1 pl-2 pr-6"
+                      className="select-custom bg-transparent border-none text-sm font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-0.5 pl-1.5 pr-5"
                     >
                       {t[lang].months.map((mName, idx) => (
                         <option key={idx} value={idx}>{mName}</option>
@@ -592,7 +526,7 @@ export default function ConferFlatDesign() {
                     <select 
                       value={year} 
                       onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value), month, 1))}
-                      className="select-custom bg-transparent border-none text-base font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-1 pl-2 pr-6"
+                      className="select-custom bg-transparent border-none text-sm font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-0.5 pl-1.5 pr-5"
                     >
                       <option value={2025}>2025</option>
                       <option value={2026}>2026</option>
@@ -602,7 +536,7 @@ export default function ConferFlatDesign() {
                   
                   <button 
                     onClick={handleNextMonth}
-                    className="w-10 h-10 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-sm transition-colors text-lg font-bold"
+                    className="w-8 h-8 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-xs transition-colors text-sm font-bold"
                     title={t[lang].nextMonth}
                   >
                     ›
@@ -610,11 +544,11 @@ export default function ConferFlatDesign() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-fira-semibold text-neutral-500">{t[lang].calendarShowBy}:</span>
-                  <div className="flex bg-[#faf9f6] rounded-full p-1 border border-black/5 shadow-inner">
+                  <span className="text-[11px] font-fira-semibold text-neutral-500">{t[lang].calendarShowBy}:</span>
+                  <div className="flex bg-[#faf9f6] rounded-full p-0.5 border border-black/5 shadow-inner">
                     <button 
                       onClick={() => setCalendarShowBy('deadline')}
-                      className={`px-4 py-1.5 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                         calendarShowBy === 'deadline' 
                           ? 'bg-[#2a2421] text-white shadow-sm' 
                           : 'bg-transparent text-neutral-600 hover:bg-black/5'
@@ -624,7 +558,7 @@ export default function ConferFlatDesign() {
                     </button>
                     <button 
                       onClick={() => setCalendarShowBy('eventDate')}
-                      className={`px-4 py-1.5 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
                         calendarShowBy === 'eventDate' 
                           ? 'bg-[#2a2421] text-white shadow-sm' 
                           : 'bg-transparent text-neutral-600 hover:bg-black/5'
@@ -856,7 +790,7 @@ export default function ConferFlatDesign() {
               {/* Close Button */}
               <button 
                 onClick={() => setSelectedData(null)} 
-                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full transition-colors z-20 shadow-sm border bg-[#faf9f6] hover:bg-[#2a2421] hover:text-white text-black border-black/5 font-sans"
+                className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full transition-colors z-20 shadow-xs border bg-[#faf9f6] hover:bg-[#2a2421] hover:text-white text-black border-black/5 font-sans text-xs"
                 aria-label="Close details"
               >
                 ✕
@@ -956,7 +890,7 @@ export default function ConferFlatDesign() {
                             <button
                               key={tabKey}
                               onClick={() => setActiveTab(tabKey)}
-                              className={`px-3 py-1.5 rounded-lg border transition-all duration-200 ${
+                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${
                                 isActive 
                                   ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs' 
                                   : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
@@ -979,7 +913,7 @@ export default function ConferFlatDesign() {
                             <button
                               key={tabKey}
                               onClick={() => setActiveTab(tabKey)}
-                              className={`px-3 py-1.5 rounded-lg border transition-all duration-200 ${
+                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${
                                 isActive 
                                   ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs' 
                                   : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
@@ -1115,15 +1049,15 @@ export default function ConferFlatDesign() {
                                 {condsData.map((c, index) => {
                                   const itemInfo = c[lang];
                                   return (
-                                    <div key={index} className="flex gap-4 items-start">
-                                      <span className="font-fira-regular text-2xl text-stone-350 select-none w-8 shrink-0 text-center">
+                                    <div key={index} className="flex gap-3 items-start">
+                                      <span className="font-fira-regular text-xl text-stone-350 select-none w-6 shrink-0 text-center">
                                         {String(index + 1).padStart(2, '0')}
                                       </span>
-                                      <div className="pt-1 flex-grow">
-                                        <h4 className="font-fira-regular font-bold text-xs uppercase tracking-wider text-stone-900 mb-1">
+                                      <div className="pt-0.5 flex-grow">
+                                        <h4 className="font-fira-regular font-bold text-xs text-stone-900 mb-0.5">
                                           {itemInfo.title}
                                         </h4>
-                                        <p className="font-fira-light text-sm leading-relaxed text-stone-600">
+                                        <p className="font-fira-light text-[11px] leading-relaxed text-stone-600">
                                           {itemInfo.desc}
                                         </p>
                                       </div>
@@ -1168,7 +1102,7 @@ export default function ConferFlatDesign() {
                   href={getGoogleCalendarUrl(selectedData.conf)} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="border font-fira-regular py-3 px-6 rounded-2xl transition-all duration-300 text-sm shadow-sm whitespace-nowrap bg-white border-black/10 hover:bg-[#2a2421] hover:text-white hover:border-[#2a2421] text-[#2a2421] flex-grow text-center max-w-[180px]"
+                  className="border font-fira-regular py-1.5 px-4 rounded-xl transition-all duration-300 text-xs shadow-xs whitespace-nowrap bg-white border-black/10 hover:bg-[#2a2421] hover:text-white hover:border-[#2a2421] text-[#2a2421] flex-grow text-center max-w-[150px]"
                 >
                   {t[lang].addToCalendar}
                 </a>
@@ -1176,7 +1110,7 @@ export default function ConferFlatDesign() {
                   href={selectedData.conf.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="font-fira-regular py-3 px-6 rounded-2xl transition-all duration-300 text-sm shadow-md whitespace-nowrap bg-[#2a2421] hover:bg-black text-white flex-grow text-center max-w-[180px]"
+                  className="font-fira-regular py-1.5 px-4 rounded-xl transition-all duration-300 text-xs shadow-sm whitespace-nowrap bg-[#2a2421] hover:bg-black text-white flex-grow text-center max-w-[150px]"
                 >
                   {t[lang].goToSite}
                 </a>
