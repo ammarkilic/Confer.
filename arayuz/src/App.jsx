@@ -712,15 +712,19 @@ export default function ConferFlatDesign() {
                     className={`relative overflow-hidden rounded-[2rem] h-[210px] w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
-                    <div className="absolute inset-x-4 top-4 bottom-4 bg-white/40 rounded-xl z-0" />
+                    <div className={`absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 ${
+                      conf.id === 'eisa-pec-2026' ? 'top-8' : 'top-4'
+                    }`} />
 
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
-                        : isTrialCard
-                          ? 'translate-y-[16px] group-hover:translate-y-1.5'
-                          : 'translate-y-[32px] group-hover:translate-y-1.5'
+                        : conf.id === 'eisa-pec-2026'
+                          ? 'translate-y-[8px] group-hover:translate-y-[2px]'
+                          : isTrialCard
+                            ? 'translate-y-[16px] group-hover:translate-y-1.5'
+                            : 'translate-y-[32px] group-hover:translate-y-1.5'
                     }`} style={{ height: isTrialCard ? '178px' : '175px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli) */}
