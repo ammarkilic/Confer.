@@ -129,3 +129,22 @@ summary {
     #faf9f6 32px
   );
 }
+
+/* Curled Tape Effect for Vintage Washi Tapes */
+.tape-curled {
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+.tape-curled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: inherit;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  filter: brightness(0.7) contrast(1.2) drop-shadow(-1px 1px 1px rgba(0,0,0,0.15));
+  pointer-events: none;
+}

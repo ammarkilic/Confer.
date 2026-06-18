@@ -685,6 +685,7 @@ export default function ConferFlatDesign() {
                 const status = getDeadlineStatus(conf.deadline);
                 const daysLeft = getRemainingDays(conf.deadline);
                 const isTrialCard = ['eisa-pec-2026', 'esg-2026', 'msa-forward-2026'].includes(conf.id);
+                const tapeRotation = (index % 2 === 0) ? 'rotate-[2.5deg]' : '-rotate-[2.5deg]';
 
                 return (
                   <div 
@@ -781,13 +782,13 @@ export default function ConferFlatDesign() {
                       openingCardId === conf.id ? 'translate-y-[12px]' : 'translate-y-0'
                     }`}>
                       
-                      {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
+                      {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal / Vintage Washi Tape) */}
                       {daysLeft >= 0 && (
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-                          <span className={`text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border shadow-sm ${
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none select-none filter drop-shadow-[0_2px_3px_rgba(0,0,0,0.12)]">
+                          <span className={`text-[9.5px] font-fira-bold uppercase tracking-wider px-3 py-1 border-y border-black/5 inline-block tape-curled ${tapeRotation} ${
                             daysLeft <= 15 
-                              ? "bg-red-50 text-red-800 border-red-200 animate-pulse font-extrabold" 
-                              : "bg-emerald-50 text-emerald-800 border-emerald-200 font-extrabold"
+                              ? "bg-[#FA5C5C]/50 text-[#2a2421]" 
+                              : "bg-[#9FCB98]/50 text-[#2a2421]"
                           }`}>
                             {daysLeft === 0 ? t[lang].todayLastDay : status.text}
                           </span>
@@ -806,7 +807,22 @@ export default function ConferFlatDesign() {
 
                       {/* Sağ Kısım: Son Başvuru Tarihi & Favori Butonu */}
                       <div className="flex items-center justify-end gap-3 relative z-40">
-                        <div className="border border-dashed border-[#c92a2a]/60 bg-transparent text-[#c92a2a] text-[10px] font-fira-semibold px-3 py-1 rounded-xl whitespace-nowrap">
+                        <div className="border border-dashed border-[#2a2421]/30 bg-transparent text-[#2a2421] text-[10px] font-fira-semibold px-3 py-1 rounded-xl whitespace-nowrap flex items-center gap-1.5 select-none">
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2.5" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            className="w-3.5 h-3.5 opacity-80"
+                          >
+                            <path d="M5 2h14" />
+                            <path d="M5 22h14" />
+                            <path d="M19 2v4c0 2-2 3-5 5v2c3 2 5 3 5 5v4" />
+                            <path d="M5 2v4c0 2 2 3 5 5v2c-3 2-5 3-5 5v4" />
+                          </svg>
                           {formatDate(conf.deadline, lang)}
                         </div>
                         <button 
@@ -824,15 +840,7 @@ export default function ConferFlatDesign() {
                       </div>
                     </div>
                     
-                    {/* Vintage Airmail Stripe Border (Only for SFAA card) */}
-                    {conf.id === 'sfaa-2026' && (
-                      <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none z-30">
-                        <div className="absolute top-0 left-0 right-0 h-[4px] airmail-stripes" />
-                        <div className="absolute bottom-0 left-0 right-0 h-[4px] airmail-stripes" />
-                        <div className="absolute top-0 bottom-0 left-0 w-[4px] airmail-stripes" />
-                        <div className="absolute top-0 bottom-0 right-0 w-[4px] airmail-stripes" />
-                      </div>
-                    )}
+
                   </div>
                 );
               })}
@@ -1261,16 +1269,7 @@ export default function ConferFlatDesign() {
                   {t[lang].goToSite}
                 </a>
               </div>
-              
-              {/* Vintage Airmail Stripe Border (Only for SFAA card in details modal) */}
-              {selectedData.conf.id === 'sfaa-2026' && (
-                <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none z-30">
-                  <div className="absolute top-0 left-0 right-0 h-[5px] airmail-stripes" />
-                  <div className="absolute bottom-0 left-0 right-0 h-[5px] airmail-stripes" />
-                  <div className="absolute top-0 bottom-0 left-0 w-[5px] airmail-stripes" />
-                  <div className="absolute top-0 bottom-0 right-0 w-[5px] airmail-stripes" />
-                </div>
-              )}
+
             </>
           )}
         </div>
