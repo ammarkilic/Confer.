@@ -960,7 +960,7 @@ export default function ConferFlatDesign() {
                                       <div key={index} className="relative flex items-center justify-between w-full min-h-[50px]">
                                         {/* Left Side (Even items show text, Odd items are hidden) */}
                                         <div className={`w-[44%] text-right pr-4 ${isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
-                                          <p className={`text-xs font-semibold ${d.passed ? 'text-stone-400' : 'text-[#ff9ab3]'}`}>
+                                          <p className="text-xs font-semibold text-stone-500">
                                             {dateFormatted}
                                           </p>
                                           <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
@@ -980,7 +980,7 @@ export default function ConferFlatDesign() {
 
                                         {/* Right Side (Odd items show text, Even items are hidden) */}
                                         <div className={`w-[44%] text-left pl-4 ${!isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
-                                          <p className={`text-xs font-semibold ${d.passed ? 'text-stone-400' : 'text-[#ff9ab3]'}`}>
+                                          <p className="text-xs font-semibold text-stone-500">
                                             {dateFormatted}
                                           </p>
                                           <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
