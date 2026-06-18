@@ -1142,22 +1142,10 @@ export default function ConferFlatDesign() {
                         </p>
                       )}
                       
-                      {/* Footnote for Band 1 / 2 */}
-                      {(activeTab === 'fees' || activeTab === 'grants') && (
-                        <div className="mt-4 pt-4 border-t border-stone-200/60 text-[10px] text-stone-500 font-sans leading-relaxed">
-                          {lang === 'tr' ? (
-                            <p>
-                              <strong>* Ülke Grupları Açıklaması:</strong><br />
-                              • <strong>Band 1:</strong> Yüksek gelirli ülkeleri (Batı Avrupa, ABD, Kanada, Avustralya, Japonya vb.) kapsar.<br />
-                              • <strong>Band 2:</strong> Düşük ve orta gelirli ülkeleri (Türkiye, Doğu Avrupa ülkeleri, Latin Amerika, Asya'nın büyük bölümü vb.) kapsar. Türkiye'den katılan araştırmacılar Band 2 oranlarına tabidir.
-                            </p>
-                          ) : (
-                            <p>
-                              <strong>* Country Groups Explanation:</strong><br />
-                              • <strong>Band 1:</strong> Includes high-income countries (Western Europe, USA, Canada, Australia, Japan, etc.).<br />
-                              • <strong>Band 2:</strong> Includes low and middle-income countries (Turkey, Eastern Europe, Latin America, most of Asia, etc.). Researchers from Turkey qualify for Band 2 rates.
-                            </p>
-                          )}
+                      {/* Dinamik Dipnot Yapısı */}
+                      {(activeTab === 'fees' || activeTab === 'grants') && selectedData.conf.details[activeTab]?.footnote && (
+                        <div className="mt-4 pt-4 border-t border-[#2a2421]/10 text-[10px] text-stone-500 font-sans leading-relaxed whitespace-pre-line">
+                          {parseMarkdownLinks(selectedData.conf.details[activeTab].footnote[lang])}
                         </div>
                       )}
                     </div>

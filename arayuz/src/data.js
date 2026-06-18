@@ -77,7 +77,11 @@ export const conferences = [
           { cat: "Student Members", early: "€90", late: "€120" },
           { cat: "Non-Members", early: "€380", late: "€485" },
           { cat: "Non-Member Students", early: "€170", late: "€230" }
-        ]
+        ],
+        footnote: {
+          tr: "* Ülke Grupları Açıklaması:\n• Band 1: Yüksek gelirli ülkeleri (Batı Avrupa, ABD, Kanada, Avustralya, Japonya vb.) kapsar.\n• Band 2: Düşük ve orta gelirli ülkeleri (Türkiye, Doğu Avrupa ülkeleri, Latin Amerika, Asya'nın büyük bölümü vb.) kapsar. Türkiye'den katılan araştırmacılar Band 2 oranlarına tabidir.",
+          en: "* Country Groups Explanation:\n• Band 1: Includes high-income countries (Western Europe, USA, Canada, Australia, Japan, etc.).\n• Band 2: Includes low and middle-income countries (Turkey, Eastern Europe, Latin America, most of Asia, etc.). Researchers from Turkey qualify for Band 2 rates."
+        }
       },
       grants: [
         {
@@ -173,15 +177,21 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Düzenli Üyeler (Kategori A)", early: "349 €", late: "549 €" },
-          { cat: "Öğrenci Üyeler (Kategori C)", early: "50 €", late: "69 €" },
+          { cat: "Kategori A Üyeleri (Yüksek Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
+          { cat: "Kategori B Üyeleri (Orta-Yüksek Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
+          { cat: "Kategori C Üyeleri (Düşük/Orta-Düşük Gelir)", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" },
           { cat: "Üye Olmayanlar", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
         ],
         en: [
-          { cat: "Regular Members (Category A)", early: "€349", late: "€549" },
-          { cat: "Student Members (Category C)", early: "€50", late: "€69" },
+          { cat: "Category A Members (High Income)", early: "NA", late: "NA" },
+          { cat: "Category B Members (Upper-Middle)", early: "NA", late: "NA" },
+          { cat: "Category C Members (Low/Lower-Middle)", early: "NA", late: "NA" },
           { cat: "Non-Members", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Kayıt Ücreti ve Kategori Açıklaması:\n• Ücretler henüz resmi olarak yayınlanmamıştır. Kayıtlar 4 Aralık 2026'da açılacaktır.\n• Kategori A: Yüksek gelirli ülkeleri (Batı Avrupa, ABD, Güney Kore, Japonya vb.) kapsar.\n• Kategori B: Orta-yüksek gelirli ülkeleri (Türkiye, Brezilya, Çin vb.) kapsar. Türkiye'den katılanlar Kategori B tarifesine tabidir.\n• Kategori C: Düşük ve orta-düşük gelirli ülkeleri kapsar.",
+          en: "* Registration Fees & Category Explanation:\n• Fees have not been officially published yet. Registration opens on December 4, 2026.\n• Category A: Includes high-income countries (Western Europe, USA, South Korea, Japan, etc.).\n• Category B: Includes upper-middle-income countries (Turkey, Brazil, China, etc.). Participants from Turkey qualify for Category B rates.\n• Category C: Includes low and lower-middle-income countries."
+        }
       },
       grants: [
         {
@@ -253,11 +263,19 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "APA Üyeleri (Yüz Yüze + Sanal)", early: "450 $", late: "650 $" },
+          { cat: "APA Üyeleri (Sadece Sanal)", early: "190 $", late: "190 $" },
+          { cat: "Üye Olmayanlar", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "APA Members (All Access)", early: "$450", late: "$650" },
+          { cat: "APA Members (Virtual Only)", early: "$190", late: "$190" },
+          { cat: "Non-Members", early: "NA", late: "NA" }
+        ],
+        footnote: {
+          tr: "* Kayıt Dönemleri:\n• Erken Kayıt (Early Bird): 22 Nisan - 20 Mayıs\n• Ön Kayıt (Advance): 21 Mayıs - 24 Haziran ($550)\n• Normal Kayıt (Regular): 24 Haziran sonrası\n• Yüz yüze (All Access) iptallerinde 24 Haziran 2026'ya kadar %50 iade hakkı bulunmaktadır.",
+          en: "* Registration Windows:\n• Early Bird: April 22 - May 20\n• Advance: May 21 - June 24 ($550)\n• Regular: After June 24\n• 50% refund is available for All Access cancellations until June 24, 2026."
+        }
       },
       grants: [
         {
@@ -338,7 +356,11 @@ export const conferences = [
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Bu etkinlik Mayıs 2026'da gerçekleşmiş ve tamamlanmıştır.",
+          en: "* Note: This event has concluded in May 2026."
+        }
       },
       grants: [
         {
@@ -423,7 +445,11 @@ export const conferences = [
           { cat: "IAAP Members (High Income)", early: "€670", late: "€790" },
           { cat: "Non-Members (High Income)", early: "€890", late: "€950" },
           { cat: "Students (Worldwide)", early: "€400", late: "€600" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Listelenen ücretler Yüksek Gelirli Ülkeler (High Income) içindir. Düşük/Orta gelirli ülke üyeleri için indirimli ücretler geçerlidir.",
+          en: "* Note: Fees listed are for High Income Countries. Discounted rates apply for members from low/middle-income countries."
+        }
       },
       grants: [
         {
@@ -470,6 +496,18 @@ export const conferences = [
       },
       dates: [
         {
+          date: "2025-10-31",
+          tr: { title: "Bildiri Özeti Gönderimi", desc: "Özet gönderimi için son tarih sona erdi." },
+          en: { title: "Abstract Submission Deadline", desc: "Abstract submission window is closed." },
+          passed: true
+        },
+        {
+          date: "2026-03-19",
+          tr: { title: "Erken Kayıt Sonu", desc: "İndirimli kayıt dönemi sona erdi." },
+          en: { title: "Early Bird Deadline", desc: "Early registration rate window is closed." },
+          passed: true
+        },
+        {
           date: "2026-07-01",
           tr: { title: "Konferans Başlangıcı", desc: "Dublin'de etkinliklerin başlaması." },
           en: { title: "Conference Starts", desc: "Events begin in Dublin." },
@@ -478,22 +516,28 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Genel Katılım (General Registration)", early: "665 €", late: "830 €" },
+          { cat: "Öğrenciler (Students / PhD Candidates)", early: "450 €", late: "500 €" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "General Registration", early: "€665", late: "€830" },
+          { cat: "Students / PhD Candidates", early: "€450", late: "€500" }
+        ],
+        footnote: {
+          tr: "* Kayıt Bilgileri:\n• Erken Kayıt (Early Bird) ücretleri 19 Mart 2026 tarihine kadar geçerliydi.\n• Kültür Akşamı (Cultural Evening) bileti ayrıca satılmaktadır (€99).",
+          en: "* Registration Info:\n• Early Bird fees were valid until March 19, 2026.\n• Tickets for the Cultural Evening are sold separately (€99)."
+        }
       },
       grants: [
         {
-          tr: { title: "Burslar", desc: "Şu an için burs bilgisi belirlenmemiştir." },
-          en: { title: "Grants", desc: "Grant information is not yet determined." }
+          tr: { title: "Burs Olanakları", desc: "Öğrenci veya düşük gelirli araştırmacılar için finansal destek olanakları Abbey Conference kanalları aracılığıyla yönetilmektedir." },
+          en: { title: "Grant Opportunities", desc: "Financial assistance for student or low-income researchers is coordinated via Abbey Conference." }
         }
       ],
       conditions: [
         {
-          tr: { title: "Katılım Şartları", desc: "Tarih belirlenmedi." },
-          en: { title: "Conditions", desc: "NA" }
+          tr: { title: "Öğrenci Doğrulaması", desc: "Öğrenci tarifelerinden yararlanmak için tam zamanlı öğrenci olunduğuna dair belgenin kayıt esnasında sunulması gerekir." },
+          en: { title: "Student Verification", desc: "A valid document showing full-time student status must be uploaded during registration to receive the discounted student rate." }
         }
       ]
     }
@@ -547,7 +591,11 @@ export const conferences = [
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Ücretler henüz resmi olarak açıklanmamıştır. Kayıtlar açıldığında EPA üyelerine indirimli oranlar uygulanacaktır.",
+          en: "* Note: Fees have not been officially published yet. EPA members will qualify for discounted rates once registration opens."
+        }
       },
       grants: [
         {
@@ -623,7 +671,11 @@ export const conferences = [
         en: [
           { cat: "EISA Members", early: "NA", late: "NA" },
           { cat: "Non-Members", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Kayıt ücretlerini görebilmek için EISA PEC 2026 Online Portal'ına giriş yapılması veya üye olunması gerekmektedir.",
+          en: "* Note: To view the registration fees, you must log in or register on the EISA PEC 2026 Online Services Portal."
+        }
       },
       grants: [
         {
@@ -941,7 +993,11 @@ export const conferences = [
           { cat: "Group A (Regular / Student)", early: "$370 / $130", late: "$420 / $160" },
           { cat: "Group B (Regular / Student)", early: "$280 / $100", late: "$315 / $120" },
           { cat: "Group C & D (Regular / Student)", early: "$175 / $65", late: "$200 / $75" }
-        ]
+        ],
+        footnote: {
+          tr: "* Ülke Grupları Açıklaması:\n• Grup A: Yüksek gelirli ülkeler.\n• Grup B: Üst-orta gelirli ülkeler (Türkiye bu gruptadır. Türkiye'den katılan araştırmacılar Grup B oranlarına tabidir).\n• Grup C: Alt-orta gelirli ülkeler.\n• Grup D: Düşük gelirli ülkeler.",
+          en: "* Country Groups Explanation:\n• Group A: High-income economies.\n• Group B: Upper-middle-income economies (includes Turkey. Participants from Turkey qualify for Group B rates).\n• Group C: Lower-middle-income economies.\n• Group D: Low-income economies."
+        }
       },
       grants: [
         {
@@ -1002,7 +1058,7 @@ export const conferences = [
           date: "2026-03-17",
           tr: { title: "Toplantı Başlangıcı", desc: "Albuquerque'de etkinlikler başlıyor." },
           en: { title: "Meeting Starts", desc: "Events begin in Albuquerque." },
-          passed: false
+          passed: true
         }
       ],
       fees: {
@@ -1011,7 +1067,11 @@ export const conferences = [
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Bu etkinlik Mart 2026'da gerçekleşmiş ve tamamlanmıştır.",
+          en: "* Note: This event has concluded in March 2026."
+        }
       },
       grants: [
         {
@@ -1076,7 +1136,11 @@ export const conferences = [
         ],
         en: [
           { cat: "Fees", early: "NA", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Not: Bu etkinlik Nisan 2026'da gerçekleşmiş ve tamamlanmıştır.",
+          en: "* Note: This event has concluded in April 2026."
+        }
       },
       grants: [
         {
@@ -1145,7 +1209,11 @@ export const conferences = [
           { cat: "Members (Low/Medium/High Income)", early: "€240 / €295 / €320", late: "€340 / €395 / €420" },
           { cat: "Non-members (Low/Medium/High Income)", early: "€308 / €418 / €474", late: "€408 / €518 / €574" },
           { cat: "Online Members (Low/Medium/High)", early: "€120 / €140 / €170", late: "NA" }
-        ]
+        ],
+        footnote: {
+          tr: "* Kayıt ve Vergi Bilgisi:\n• Ülke gelir seviyeleri Dünya Bankası verilerine dayanmaktadır (Düşük, Orta ve Yüksek gelir). Türkiye orta gelir grubundadır.\n• Yüz yüze katılım ücretlerine %23 Polonya KDV'si dahildir.",
+          en: "* Registration & Tax Info:\n• Country income levels are based on World Bank data (Low, Medium, and High-income). Turkey is categorized in the medium-income bracket.\n• In-person fees include 23% Polish VAT."
+        }
       },
       grants: [
         {
@@ -1257,6 +1325,24 @@ export const conferences = [
       },
       dates: [
         {
+          date: "2026-04-27",
+          tr: { title: "Erken Kayıt Başlangıcı", desc: "Kongre kayıtları indirimli oranlarla açılıyor." },
+          en: { title: "Early Registration Opens", desc: "Registration opens with discounted rates." },
+          passed: false
+        },
+        {
+          date: "2026-08-31",
+          tr: { title: "Erken Kayıt Sonu", desc: "İndirimli kayıt dönemi sona eriyor." },
+          en: { title: "Early Bird Registration Ends", desc: "Discounted registration period ends." },
+          passed: false
+        },
+        {
+          date: "2026-11-04",
+          tr: { title: "Sanal Ön Konferans Başlangıcı", desc: "Çevrimiçi pre-konferans oturumları başlıyor." },
+          en: { title: "Virtual Pre-Conference Starts", desc: "Online pre-conference sessions begin." },
+          passed: false
+        },
+        {
           date: "2026-11-18",
           tr: { title: "Kongre Başlangıcı", desc: "St. Louis'de kongre oturumları başlıyor." },
           en: { title: "Congress Starts", desc: "Congress sessions begin in St. Louis." },
@@ -1271,11 +1357,21 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Profesyonel Üyeler", early: "$350", late: "$396" },
+          { cat: "Emekli / İşsiz Üyeler", early: "$283", late: "$329" },
+          { cat: "Öğrenci Üyeler", early: "$154", late: "$180" },
+          { cat: "Üye Olmayanlar", early: "$625", late: "$709" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "Professional Members", early: "$350", late: "$396" },
+          { cat: "Retired / Unemployed Members", early: "$283", late: "$329" },
+          { cat: "Student Members", early: "$154", late: "$180" },
+          { cat: "Non-Members", early: "$625", late: "$709" }
+        ],
+        footnote: {
+          tr: "* Kayıt Dönemleri Açıklaması:\n• Erken kayıt dönemi 27 Nisan – 31 Ağustos 2026 tarihleridir.\n• Standart kayıt dönemi 1 Eylül – 22 Kasım 2026 tarihleridir.\n• Sadece sanal pre-konferans (4-5 Kasım) katılım ücretleri: Üye olmayanlar için 150 $, profesyonel üyeler için 100 $, öğrenci/emekli üyeler için 50 $.",
+          en: "* Registration Periods Explanation:\n• Early-bird registration: April 27 – August 31, 2026.\n• Regular registration: September 1 – November 22, 2026.\n• Virtual-only pre-conference (Nov 4-5) rates: $150 Nonmembers, $100 Professional members, $50 Student/Retired members."
+        }
       },
       grants: [
         {
@@ -1355,7 +1451,11 @@ export const conferences = [
           { cat: "Tier 2 Countries (Non-Member/Member)", early: "€100 / €50", late: "€150 / €70" },
           { cat: "Tier 3 Countries (Non-Member/Member)", early: "€85 / €40", late: "€100 / €60" },
           { cat: "Students", early: "€30", late: "€30" }
-        ]
+        ],
+        footnote: {
+          tr: "* Ülke Grupları Açıklaması:\n• Tier 1: Yüksek gelirli ülkeler.\n• Tier 2: Orta gelirli ülkeler (Türkiye bu gruptadır. Türkiye'den katılan araştırmacılar Tier 2 oranlarına tabidir).\n• Tier 3: Düşük gelirli ülkeler.",
+          en: "* Country Groups Explanation:\n• Tier 1: High-income economies.\n• Tier 2: Upper-middle-income economies (includes Turkey. Participants from Turkey qualify for Tier 2 rates).\n• Tier 3: Low-income economies."
+        }
       },
       grants: [
         {
@@ -1416,11 +1516,15 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Kayıt Ücretleri", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "Registration Fees", early: "NA", late: "NA" }
+        ],
+        footnote: {
+          tr: "* Kayıt ücretleri henüz resmi olarak açıklanmamıştır. CSA genellikle katılımcının yıllık gelirine ve öğrencilik durumuna göre kademeli fiyatlandırma uygulamaktadır.",
+          en: "* Registration fees have not been officially announced yet. CSA typically applies tiered pricing based on the participant's annual income level and student status."
+        }
       },
       grants: [
         {
@@ -1483,6 +1587,12 @@ export const conferences = [
           passed: false
         },
         {
+          date: "2026-08-05",
+          tr: { title: "Standart Kayıt Sonu", desc: "Standart kayıt dönemi sona eriyor." },
+          en: { title: "Standard Registration Deadline", desc: "Standard registration period ends." },
+          passed: false
+        },
+        {
           date: "2026-09-02",
           tr: { title: "Konferans Başlangıcı", desc: "Leicester'da konferans başlıyor." },
           en: { title: "Conference Starts", desc: "Conference begins in Leicester." },
@@ -1491,11 +1601,25 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "MeCCSA Üyesi (3 Günlük)", early: "£290", late: "£360" },
+          { cat: "Üye Olmayan (3 Günlük)", early: "£320", late: "£420" },
+          { cat: "Öğrenci / Gelirsiz (3 Günlük)", early: "£210", late: "£240" },
+          { cat: "MeCCSA Üyesi (1 Günlük)", early: "£120", late: "£150" },
+          { cat: "Üye Olmayan (1 Günlük)", early: "£150", late: "£175" },
+          { cat: "Öğrenci / Gelirsiz (1 Günlük)", early: "£70", late: "£80" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "MeCCSA Member Waged (3 days)", early: "£290", late: "£360" },
+          { cat: "Non-Member Waged (3 days)", early: "£320", late: "£420" },
+          { cat: "Student / Unwaged (3 days)", early: "£210", late: "£240" },
+          { cat: "MeCCSA Member Waged (1 day)", early: "£120", late: "£150" },
+          { cat: "Non-Member Waged (1 day)", early: "£150", late: "£175" },
+          { cat: "Student / Unwaged (1 day)", early: "£70", late: "£80" }
+        ],
+        footnote: {
+          tr: "* Ek Seçenekler ve Detaylar:\n• Konferans yemeği bilet ücreti £49 ek ücrete tabidir.\n• Curve Theatre sahne arkası turu £12 ek ücrete tabidir.\n• Erken kayıt dönemi 15 Temmuz 2026'ya kadar devam etmektedir. Standart kayıtlar ise 5 Ağustos 2026'ya kadar yapılabilir.\n• Konaklama ücretleri bu fiyatlara dahil değildir.",
+          en: "* Additional Options & Details:\n• Conference dinner ticket is available for an additional £49.\n• Curve Theatre backstage tour is available for an additional £12.\n• Early bird registration runs until July 15, 2026. Standard registration ends on August 5, 2026.\n• Accommodation is not included in the registration fee."
+        }
       },
       grants: [
         {
@@ -1550,11 +1674,15 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Atölye Katılım Ücreti", early: "50 €", late: "50 €" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "Workshop Registration Fee", early: "€50", late: "€50" }
+        ],
+        footnote: {
+          tr: "* Katılım Şartları:\n• Atölyede sunum yapmak üzere kabul edilen tüm araştırmacıların aktif MSA üyesi olması zorunludur.\n• Sınırlı sayıda seyahat, konaklama veya kayıt ücreti desteği sunan seyahat bursları mevcuttur.",
+          en: "* Participation Conditions:\n• All presenters accepted to the workshop must be active MSA members.\n• A limited number of travel grants supporting travel, accommodation, or fee waivers are available."
+        }
       },
       grants: [
         {
@@ -1615,11 +1743,15 @@ export const conferences = [
       ],
       fees: {
         tr: [
-          { cat: "Ücretler", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
+          { cat: "Kayıt Ücretleri", early: "Tarih belirlenmedi", late: "Tarih belirlenmedi" }
         ],
         en: [
-          { cat: "Fees", early: "NA", late: "NA" }
-        ]
+          { cat: "Registration Fees", early: "NA", late: "NA" }
+        ],
+        footnote: {
+          tr: "* 2027 yılı kayıt ücretleri henüz açıklanmamıştır. Sunum yapmak veya oturum yönetmek için aktif PCA üyeliği şarttır.",
+          en: "* Registration fees for 2027 have not been announced yet. An active PCA membership is required to present or chair a session."
+        }
       },
       grants: [
         {
