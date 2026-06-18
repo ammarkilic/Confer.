@@ -179,7 +179,7 @@ export default function ConferFlatDesign() {
   };
 
   const elegantStyle = {
-    cardBg: "bg-gradient-to-br from-white via-[#faf9f6] to-[#e8e2d5]",
+    cardBg: "bg-[#e8e2d5]",
     border: "border-[#cfc6b5]/50",
     text: "text-[#5c5043]",
     tagBg: "bg-[#e8e2d5]/45 text-[#5c5043]"
@@ -778,7 +778,7 @@ export default function ConferFlatDesign() {
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-4px_12px_rgba(42,36,33,0.08)]`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
