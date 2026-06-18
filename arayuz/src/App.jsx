@@ -840,12 +840,18 @@ export default function ConferFlatDesign() {
 
                 <div className="flex items-start gap-5 mb-4 pr-40">
                   <div className="pt-1">
-                    <h2 className="text-2xl font-bold leading-tight mb-2 tracking-tight transition-colors duration-300 text-[#2a2421] font-fira-regular">
+                    <h2 className="text-2xl leading-tight mb-1 tracking-tight transition-colors duration-300 text-[#2a2421] font-fira-bold">
                       {selectedData.conf.title}
                     </h2>
-                    <p className="text-sm md:text-base font-fira-light opacity-70 mt-1.5 transition-colors duration-300 text-[#2a2421] leading-snug">
-                      {selectedData.conf.organizer}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
+                      <p className="text-sm md:text-base font-fira-light opacity-70 transition-colors duration-300 text-[#2a2421] leading-snug">
+                        {selectedData.conf.organizer}
+                      </p>
+                      <span className="w-1.5 h-1.5 rounded-full bg-stone-300 shrink-0 hidden md:inline" />
+                      <p className="text-xs md:text-sm font-fira-regular text-stone-500 flex items-center gap-1.5">
+                        📍 {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 
