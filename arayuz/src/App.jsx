@@ -709,8 +709,10 @@ export default function ConferFlatDesign() {
                         setOpeningCardId(null);
                       }, 300);
                     }} 
-                    className={`relative rounded-[2rem] h-[210px] w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 ${
-                      conf.id === 'eisa-pec-2026' ? 'overflow-visible' : 'overflow-hidden'
+                    className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 ${
+                      conf.id === 'eisa-pec-2026' 
+                        ? 'overflow-visible h-[190px] rounded-xl' 
+                        : 'overflow-hidden h-[210px] rounded-[2rem]'
                     }`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
@@ -722,7 +724,7 @@ export default function ConferFlatDesign() {
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
                         : conf.id === 'eisa-pec-2026'
-                          ? 'translate-y-[-8px] group-hover:translate-y-[-16px]'
+                          ? 'translate-y-[-16px] group-hover:translate-y-[-24px]'
                           : isTrialCard
                             ? 'translate-y-[16px] group-hover:translate-y-1.5'
                             : 'translate-y-[32px] group-hover:translate-y-1.5'
@@ -786,7 +788,9 @@ export default function ConferFlatDesign() {
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-[2rem] z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)] ${
+                      conf.id === 'eisa-pec-2026' ? 'rounded-b-xl' : 'rounded-b-[2rem]'
+                    }`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
