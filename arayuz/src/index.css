@@ -79,13 +79,13 @@ body {
   }
 }
 
-@keyframes modalScaleUp {
+@keyframes modalSlideUp {
   from {
-    transform: scale(0.95);
+    transform: translateY(20px) scale(0.98);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
@@ -95,7 +95,7 @@ body {
 }
 
 .modal-content-animate {
-  animation: modalScaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: modalSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Collapsible details summary styles */

@@ -694,18 +694,17 @@ export default function ConferFlatDesign() {
                       setOpeningCardId(conf.id);
                       setTimeout(() => {
                         setSelectedData({ conf, style });
-                        setOpeningCardId(null);
-                      }, 300);
+                      }, 450);
                     }} 
                     className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 overflow-visible h-[190px] rounded-xl`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
-                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-t-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
+                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-t-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
-                        ? '-translate-y-6 opacity-0 scale-98 duration-300' 
-                        : 'translate-y-[-16px] group-hover:translate-y-[-24px]'
+                        ? 'translate-y-[-90px] scale-[1.02] duration-500 ease-out' 
+                        : 'translate-y-[-16px] group-hover:translate-y-[-24px] duration-300 ease-out'
                     }`} style={{ height: '178px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli / Gerçekçi Perfore Pul) */}
@@ -869,7 +868,10 @@ export default function ConferFlatDesign() {
       {/* CENTRED POPUP DETAILS MODAL */}
       <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 ${selectedData ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {/* Backdrop overlay */}
-        <div className="absolute inset-0 bg-[#2a2421]/60 backdrop-blur-xs transition-opacity duration-300" onClick={() => setSelectedData(null)} />
+        <div className="absolute inset-0 bg-[#2a2421]/60 backdrop-blur-xs transition-opacity duration-300" onClick={() => {
+          setSelectedData(null);
+          setOpeningCardId(null);
+        }} />
         
         {/* Modal panel */}
         <div className={`relative w-full max-w-2xl max-h-[90vh] shadow-2xl rounded-[2.5rem] bg-white text-[#2a2421] flex flex-col overflow-hidden transition-all duration-300 ${
@@ -879,7 +881,10 @@ export default function ConferFlatDesign() {
             <>
               {/* Close Button */}
               <button 
-                onClick={() => setSelectedData(null)} 
+                onClick={() => {
+                  setSelectedData(null);
+                  setOpeningCardId(null);
+                }} 
                 className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full transition-colors z-20 shadow-xs border bg-[#faf9f6] hover:bg-[#2a2421] hover:text-white text-black border-black/5 font-sans text-xs"
                 aria-label="Close details"
               >
