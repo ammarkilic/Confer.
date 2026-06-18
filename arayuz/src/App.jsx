@@ -296,7 +296,7 @@ export default function ConferFlatDesign() {
           <h1 className="text-5xl md:text-6xl font-bold font-fira-bold tracking-tight text-[#2a2421] flex items-center gap-0.5 mb-1 select-none">
             Confer<span className="text-[#ff9ab3] font-serif font-black">.</span>
           </h1>
-          <p className="text-stone-500 font-fira-regular text-xs md:text-sm tracking-wide mt-1.5 max-w-[185px] md:max-w-[230px] leading-snug">{t[lang].subtitle}</p>
+          <p className="text-stone-500 font-fira-light text-[7.2px] md:text-[9.5px] tracking-tighter md:tracking-normal whitespace-nowrap mt-0.5">{t[lang].subtitle}</p>
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
