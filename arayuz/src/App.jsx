@@ -652,7 +652,7 @@ export default function ConferFlatDesign() {
                     }`} style={{ height: '178px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli) */}
-                      <div className="absolute top-[29px] right-5 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 transform rotate-3 select-none flex items-center justify-center shrink-0">
+                      <div className="absolute top-[29px] right-5 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 select-none flex items-center justify-center shrink-0">
                         <img 
                           src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
                           alt="Postage Stamp" 
@@ -798,7 +798,7 @@ export default function ConferFlatDesign() {
                 {/* Mektup Pulu Konseptli Logo (Kesikli Çerçeve ve Posta Damgası) */}
                 <div 
                   className="absolute right-16 w-16 h-20 bg-white p-[5px] shadow-md border-2 border-dashed border-stone-400/80 select-none flex items-center justify-center shrink-0 z-10"
-                  style={{ top: '50%', transform: 'translateY(-50%) rotate(3deg)' }}
+                  style={{ top: '50%', transform: 'translateY(-50%)' }}
                 >
                   <img 
                     src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`} 
