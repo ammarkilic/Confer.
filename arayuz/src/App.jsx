@@ -694,7 +694,7 @@ export default function ConferFlatDesign() {
                       setOpeningCardId(conf.id);
                       setTimeout(() => {
                         setSelectedData({ conf, style });
-                      }, 450);
+                      }, 300);
                     }} 
                     className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 overflow-visible h-[190px] rounded-xl`}
                   >
@@ -703,7 +703,7 @@ export default function ConferFlatDesign() {
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
-                        ? 'paper-jump-active' 
+                        ? 'translate-y-[-50px] duration-300 ease-out' 
                         : 'translate-y-[-16px] group-hover:translate-y-[-24px] duration-300 ease-out'
                     }`} style={{ height: '178px' }}>
                       
@@ -804,7 +804,7 @@ export default function ConferFlatDesign() {
 
                       {/* Sağ Kısım: Son Başvuru Tarihi & Favori Butonu */}
                       <div className="flex items-center justify-end gap-3 relative z-40">
-                        <div className="border border-red-100 bg-red-50/70 text-[#c92a2a] text-[10px] font-fira-semibold px-3 py-1 rounded-xl whitespace-nowrap">
+                        <div className="border border-dashed border-[#c92a2a]/60 bg-transparent text-[#c92a2a] text-[10px] font-fira-semibold px-3 py-1 rounded-xl whitespace-nowrap">
                           {formatDate(conf.deadline, lang)}
                         </div>
                         <button 
