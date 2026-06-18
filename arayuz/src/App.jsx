@@ -645,14 +645,14 @@ export default function ConferFlatDesign() {
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
-                    <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
+                    <div className={`absolute inset-x-4 bg-white rounded-t-xl pt-7 pb-4 px-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
                         : 'translate-y-[-16px] group-hover:translate-y-[-24px]'
                     }`} style={{ height: '178px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli) */}
-                      <div className="absolute top-4 right-4 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 transform rotate-3 select-none flex items-center justify-center shrink-0">
+                      <div className="absolute top-6 right-5 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 transform rotate-3 select-none flex items-center justify-center shrink-0">
                         <img 
                           src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
                           alt="Postage Stamp" 
