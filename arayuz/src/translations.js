@@ -1,6 +1,6 @@
 export const t = {
   tr: {
-    subtitle: "Akademik etkinlikleri filtreleyin ve takip edin.",
+    subtitle: "Saygın akademik etkinlikleri takip edin.",
     searchPlaceholder: "Konferans veya kurum ara...",
     discipline: "Disiplin",
     region: "Bölge",
@@ -52,7 +52,7 @@ export const t = {
     countryBandsFootnote: "* Band 1 yüksek gelirli ülkeleri, Band 2 ise orta ve düşük gelirli ülkeleri kapsamaktadır."
   },
   en: {
-    subtitle: "Filter and track academic events.",
+    subtitle: "Track prestigious academic events.",
     searchPlaceholder: "Search conferences or institutions...",
     discipline: "Discipline",
     region: "Region",

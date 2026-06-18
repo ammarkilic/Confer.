@@ -291,12 +291,12 @@ export default function ConferFlatDesign() {
     <div className="min-h-screen font-sans p-4 sm:p-8 relative transition-colors duration-300 text-[#2a2421]">
       
       {/* ÜST BAŞLIK BÖLÜMÜ */}
-      <header className="max-w-7xl mx-auto mb-10 flex flex-wrap justify-between items-center gap-4 border-b border-black/5 pb-6">
+      <header className="max-w-7xl mx-auto mb-6 flex flex-wrap justify-between items-center gap-4 border-b border-black/5 pb-6">
         <div>
-          <h1 className="text-4xl md:text-5xl font-semibold font-fira-regular tracking-tight text-[#2a2421] flex items-center gap-0.5 mb-1 select-none">
+          <h1 className="text-5xl md:text-6xl font-bold font-fira-bold tracking-tight text-[#2a2421] flex items-center gap-0.5 mb-1 select-none">
             Confer<span className="text-[#ff9ab3] font-serif font-black">.</span>
           </h1>
-          <p className="text-stone-500 font-fira-regular text-sm md:text-base tracking-wide mt-1">{t[lang].subtitle}</p>
+          <p className="text-stone-500 font-fira-regular text-xs md:text-sm tracking-wide mt-1.5 max-w-[185px] md:max-w-[230px] leading-snug">{t[lang].subtitle}</p>
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
@@ -351,19 +351,16 @@ export default function ConferFlatDesign() {
       </header>
 
       {/* ANA GRID DÜZENİ */}
-      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-6">
         
         {/* SOL STICKY FİLTRE PANELİ */}
         <aside className="lg:col-span-1 lg:sticky lg:top-8 w-full z-20">
-          <div className="rounded-[2.5rem] p-6 flex flex-col gap-6 shadow-md border border-black/5 bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2]">
-            <div className="flex justify-between items-start gap-2">
+          <div className="rounded-2xl p-6 flex flex-col gap-6 shadow-md border border-black/5 bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2]">
+            <div className="flex justify-between items-start gap-2 mb-2">
               <div>
-                <h2 className="text-xl font-bold tracking-tight mb-1 text-[#2a2421] font-fira-regular">
-                  {lang === 'tr' ? 'Keşfet & Filtrele' : 'Explore & Filter'}
+                <h2 className="text-xl font-bold tracking-tight text-[#2a2421] font-fira-regular">
+                  {lang === 'tr' ? 'Filtrele' : 'Filter'}
                 </h2>
-                <p className="text-xs text-[#5a5451] font-fira-light mt-0.5">
-                  {lang === 'tr' ? 'Kriterlerinize göre filtreleyin.' : 'Filter to narrow down events.'}
-                </p>
               </div>
               {(selectedTags.length > 0 || selectedRegions.length > 0 || searchTerm !== "" || showFavoritesOnly || showOpenOnly) && (
                 <button 
@@ -623,7 +620,7 @@ export default function ConferFlatDesign() {
             </div>
           ) : (
             /* LİSTE GÖRÜNÜMÜ */
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 w-full pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 w-full pt-4">
               {sorted.map((conf, index) => {
                 const displayLocation = lang === 'tr' ? conf.location : conf.locationEn;
                 const displayTags = lang === 'tr' ? conf.tags : conf.tagsEn;

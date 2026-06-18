@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Fira Sans', sans-serif;
-  background-color: #fdfbf9; /* elegant paper background */
+  background-color: #fefdfb; /* slightly lighter elegant paper background */
   color: #2a2421; /* ink color */
 }
 
@@ -31,6 +31,11 @@ body {
 .font-fira-semibold {
   font-family: 'Fira Sans', sans-serif !important;
   font-weight: 600 !important;
+}
+
+.font-fira-bold {
+  font-family: 'Fira Sans', sans-serif !important;
+  font-weight: 700 !important;
 }
 
 .font-fira-light {
