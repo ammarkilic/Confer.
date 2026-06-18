@@ -291,7 +291,7 @@ export default function ConferFlatDesign() {
     <div className="min-h-screen font-sans p-4 sm:p-8 relative transition-colors duration-300 text-[#2a2421]">
       
       {/* ÜST BAŞLIK BÖLÜMÜ */}
-      <header className="max-w-7xl mx-auto mb-6 flex flex-wrap justify-between items-center gap-4 border-b border-black/5 pb-6">
+      <header className="max-w-7xl mx-auto mb-3 flex flex-wrap justify-between items-end gap-4 border-b border-black/5 pb-3">
         <div>
           <h1 className="text-5xl md:text-6xl font-bold font-fira-bold tracking-tight text-[#2a2421] flex items-center gap-0.5 mb-1 select-none">
             Confer<span className="text-[#ff9ab3] font-serif font-black">.</span>
@@ -351,14 +351,14 @@ export default function ConferFlatDesign() {
       </header>
 
       {/* ANA GRID DÜZENİ */}
-      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-6">
+      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-2">
         
         {/* SOL STICKY FİLTRE PANELİ */}
         <aside className="lg:col-span-1 lg:sticky lg:top-8 w-full z-20">
-          <div className="rounded-2xl p-6 flex flex-col gap-6 shadow-md border border-black/5 bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2]">
-            <div className="flex justify-between items-start gap-2 mb-2">
+          <div className="rounded-2xl p-6 flex flex-col gap-4 shadow-md border border-black/5 bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2]">
+            <div className="flex justify-between items-start gap-2 mb-0">
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-[#2a2421] font-fira-regular">
+                <h2 className="text-xl tracking-tight text-[#2a2421] font-fira-semibold">
                   {lang === 'tr' ? 'Filtrele' : 'Filter'}
                 </h2>
               </div>
@@ -399,7 +399,7 @@ export default function ConferFlatDesign() {
                     onChange={(e) => setShowFavoritesOnly(e.target.checked)}
                     className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
                   />
-                  <span className="font-fira-regular font-semibold text-xs leading-none">★ {t[lang].favoritesOnly}</span>
+                  <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].favoritesOnly}</span>
                 </label>
 
                 <label className="flex items-center gap-2.5 text-sm cursor-pointer p-2.5 rounded-xl border border-black/5 bg-white text-[#2a2421] select-none shadow-sm">
@@ -409,7 +409,7 @@ export default function ConferFlatDesign() {
                     onChange={(e) => setShowOpenOnly(e.target.checked)}
                     className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
                   />
-                  <span className="font-fira-regular font-semibold text-xs leading-none">🟢 {t[lang].openOnly}</span>
+                  <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].openOnly}</span>
                 </label>
               </div>
 
