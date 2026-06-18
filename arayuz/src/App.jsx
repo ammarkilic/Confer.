@@ -843,15 +843,9 @@ export default function ConferFlatDesign() {
                     <h2 className="text-2xl leading-tight mb-1 tracking-tight transition-colors duration-300 text-[#2a2421] font-fira-bold">
                       {selectedData.conf.title}
                     </h2>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
-                      <p className="text-sm md:text-base font-fira-light opacity-70 transition-colors duration-300 text-[#2a2421] leading-snug">
-                        {selectedData.conf.organizer}
-                      </p>
-                      <span className="w-1.5 h-1.5 rounded-full bg-stone-300 shrink-0 hidden md:inline" />
-                      <p className="text-xs md:text-sm font-fira-regular text-stone-500 flex items-center gap-1.5">
-                        📍 {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
-                      </p>
-                    </div>
+                    <p className="text-sm md:text-base font-fira-light opacity-70 mt-0.5 transition-colors duration-300 text-[#2a2421] leading-snug">
+                      {selectedData.conf.organizer}
+                    </p>
                   </div>
                 </div>
                 
@@ -943,6 +937,13 @@ export default function ConferFlatDesign() {
                                 <p className="font-fira-light text-stone-850 leading-relaxed text-base">
                                   {sumData.text}
                                 </p>
+                                <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                                  <span>📍</span>
+                                  <span>
+                                    <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
+                                    {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
+                                  </span>
+                                </div>
                               </div>
                             );
                           }
@@ -1074,9 +1075,20 @@ export default function ConferFlatDesign() {
                         })()
                       ) : (
                         // Standard Tab Content
-                        <p className="font-serif font-normal text-base leading-relaxed text-stone-800 whitespace-pre-line">
-                          {parseMarkdownLinks(selectedData.conf.details[lang][activeTab])}
-                        </p>
+                        <div className="flex flex-col gap-4">
+                          <p className="font-serif font-normal text-base leading-relaxed text-stone-800 whitespace-pre-line">
+                            {parseMarkdownLinks(selectedData.conf.details[lang][activeTab])}
+                          </p>
+                          {activeTab === 'cfp' && (
+                            <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                              <span>📍</span>
+                              <span>
+                                <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
+                                {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       )}
                       
                       {/* Dinamik Dipnot Yapısı */}
@@ -1088,14 +1100,23 @@ export default function ConferFlatDesign() {
                     </div>
                   </div>
                 ) : (
-                  <>
-                    <h3 className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-3 block font-fira-regular">
-                      {t[lang].cfp}
-                    </h3>
-                    <p className="font-fira-light text-base leading-relaxed text-stone-800 whitespace-pre-line">
-                      {lang === 'tr' ? selectedData.conf.cfpText : selectedData.conf.cfpTextEn || selectedData.conf.cfpText}
-                    </p>
-                  </>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <h3 className="text-[9px] font-extrabold uppercase tracking-widest text-stone-500 mb-3 block font-fira-regular">
+                        {t[lang].cfp}
+                      </h3>
+                      <p className="font-fira-light text-base leading-relaxed text-stone-800 whitespace-pre-line">
+                        {lang === 'tr' ? selectedData.conf.cfpText : selectedData.conf.cfpTextEn || selectedData.conf.cfpText}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                      <span>📍</span>
+                      <span>
+                        <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
+                        {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
+                      </span>
+                    </div>
+                  </div>
                 )}
               </div>
 
