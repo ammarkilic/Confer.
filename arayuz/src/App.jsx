@@ -713,7 +713,7 @@ export default function ConferFlatDesign() {
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className={`absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 ${
-                      conf.id === 'eisa-pec-2026' ? 'top-6' : 'top-4'
+                      conf.id === 'eisa-pec-2026' ? 'top-[96px]' : 'top-4'
                     }`} />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
