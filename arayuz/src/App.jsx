@@ -815,7 +815,7 @@ export default function ConferFlatDesign() {
                             toggleFavorite(conf.id); 
                           }}
                           className={`text-lg transition-all duration-300 hover:scale-125 z-40 ${
-                            favorites.includes(conf.id) ? 'text-yellow-400 font-bold drop-shadow-sm' : 'text-stone-400 opacity-60 hover:opacity-100'
+                            favorites.includes(conf.id) ? 'text-[#5c5043] font-bold drop-shadow-sm' : 'text-stone-400 opacity-60 hover:opacity-100'
                           }`}
                           aria-label="Toggle Favorite"
                         >
