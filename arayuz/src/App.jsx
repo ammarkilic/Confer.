@@ -689,7 +689,7 @@ export default function ConferFlatDesign() {
             </div>
           ) : (
             /* LİSTE GÖRÜNÜMÜ */
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 w-full pt-8">
               {sorted.map((conf, index) => {
                 const displayLocation = lang === 'tr' ? conf.location : conf.locationEn;
                 const displayTags = lang === 'tr' ? conf.tags : conf.tagsEn;
@@ -709,26 +709,16 @@ export default function ConferFlatDesign() {
                         setOpeningCardId(null);
                       }, 300);
                     }} 
-                    className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 ${
-                      conf.id === 'eisa-pec-2026' 
-                        ? 'overflow-visible h-[190px] rounded-xl' 
-                        : 'overflow-hidden h-[210px] rounded-[2rem]'
-                    }`}
+                    className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 overflow-visible h-[190px] rounded-xl`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
-                    <div className={`absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 ${
-                      conf.id === 'eisa-pec-2026' ? 'top-[96px]' : 'top-4'
-                    }`} />
+                    <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
-                        : conf.id === 'eisa-pec-2026'
-                          ? 'translate-y-[-16px] group-hover:translate-y-[-24px]'
-                          : isTrialCard
-                            ? 'translate-y-[16px] group-hover:translate-y-1.5'
-                            : 'translate-y-[32px] group-hover:translate-y-1.5'
-                    }`} style={{ height: isTrialCard ? '178px' : '175px' }}>
+                        : 'translate-y-[-16px] group-hover:translate-y-[-24px]'
+                    }`} style={{ height: '178px' }}>
                       
                       {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli) */}
                       <div className="absolute top-4 right-4 w-12 h-12 bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 transform rotate-3 select-none flex items-center justify-center shrink-0">
@@ -781,16 +771,14 @@ export default function ConferFlatDesign() {
                           {conf.title}
                         </h2>
                         {/* ORGANİZATÖR */}
-                        <p className={`text-[10px] font-fira-light opacity-70 text-[#2a2421] truncate ${isTrialCard ? 'mt-0' : 'mt-1'}`}>
+                        <p className="text-[10px] font-fira-light opacity-70 text-[#2a2421] truncate mt-0">
                           {conf.organizer}
                         </p>
                       </div>
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)] ${
-                      conf.id === 'eisa-pec-2026' ? 'rounded-b-xl' : 'rounded-b-[2rem]'
-                    }`}>
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
