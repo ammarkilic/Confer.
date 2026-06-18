@@ -713,7 +713,7 @@ export default function ConferFlatDesign() {
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className={`absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 ${
-                      conf.id === 'eisa-pec-2026' ? 'top-[96px]' : 'top-4'
+                      conf.id === 'eisa-pec-2026' ? 'top-6' : 'top-4'
                     }`} />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
                     <div className={`absolute inset-x-4 bg-white rounded-t-xl p-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
@@ -784,7 +784,9 @@ export default function ConferFlatDesign() {
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-[2rem] z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
+                    <div className={`absolute bottom-0 left-0 right-0 ${
+                      conf.id === 'eisa-pec-2026' ? 'h-[24%]' : 'h-[42%]'
+                    } ${style.cardBg} border-t ${style.border} rounded-b-[2rem] z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-3px_8px_rgba(0,0,0,0.02)]`}>
                       
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal) */}
                       {daysLeft >= 0 && (
