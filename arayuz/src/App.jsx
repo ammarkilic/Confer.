@@ -937,10 +937,9 @@ export default function ConferFlatDesign() {
                                 <p className="font-fira-light text-stone-850 leading-relaxed text-base">
                                   {sumData.text}
                                 </p>
-                                <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                                <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
                                   <span>📍</span>
                                   <span>
-                                    <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
                                     {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                                   </span>
                                 </div>
@@ -1080,10 +1079,9 @@ export default function ConferFlatDesign() {
                             {parseMarkdownLinks(selectedData.conf.details[lang][activeTab])}
                           </p>
                           {activeTab === 'cfp' && (
-                            <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                            <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
                               <span>📍</span>
                               <span>
-                                <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
                                 {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                               </span>
                             </div>
@@ -1109,10 +1107,9 @@ export default function ConferFlatDesign() {
                         {lang === 'tr' ? selectedData.conf.cfpText : selectedData.conf.cfpTextEn || selectedData.conf.cfpText}
                       </p>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-sm font-fira-regular text-stone-600">
+                    <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
                       <span>📍</span>
                       <span>
-                        <strong>{lang === 'tr' ? 'Konferans Yeri:' : 'Conference Location:'}</strong>{' '}
                         {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                       </span>
                     </div>
