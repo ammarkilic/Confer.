@@ -823,6 +823,16 @@ export default function ConferFlatDesign() {
                         </button>
                       </div>
                     </div>
+                    
+                    {/* Vintage Airmail Stripe Border (Only for SFAA card) */}
+                    {conf.id === 'sfaa-2026' && (
+                      <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none z-30">
+                        <div className="absolute top-0 left-0 right-0 h-[4px] airmail-stripes" />
+                        <div className="absolute bottom-0 left-0 right-0 h-[4px] airmail-stripes" />
+                        <div className="absolute top-0 bottom-0 left-0 w-[4px] airmail-stripes" />
+                        <div className="absolute top-0 bottom-0 right-0 w-[4px] airmail-stripes" />
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -1251,6 +1261,16 @@ export default function ConferFlatDesign() {
                   {t[lang].goToSite}
                 </a>
               </div>
+              
+              {/* Vintage Airmail Stripe Border (Only for SFAA card in details modal) */}
+              {selectedData.conf.id === 'sfaa-2026' && (
+                <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none z-30">
+                  <div className="absolute top-0 left-0 right-0 h-[5px] airmail-stripes" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[5px] airmail-stripes" />
+                  <div className="absolute top-0 bottom-0 left-0 w-[5px] airmail-stripes" />
+                  <div className="absolute top-0 bottom-0 right-0 w-[5px] airmail-stripes" />
+                </div>
+              )}
             </>
           )}
         </div>

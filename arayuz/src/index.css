@@ -114,3 +114,18 @@ summary {
 .font-typewriter {
   font-family: 'Fira Sans', sans-serif !important;
 }
+
+/* Vintage Airmail Stripe Border */
+.airmail-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #d9383a,
+    #d9383a 8px,
+    #faf9f6 8px,
+    #faf9f6 16px,
+    #3b5bdb 16px,
+    #3b5bdb 24px,
+    #faf9f6 24px,
+    #faf9f6 32px
+  );
+}
