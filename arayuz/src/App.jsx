@@ -732,86 +732,55 @@ export default function ConferFlatDesign() {
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
                      {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
-                    <div className={`absolute inset-x-4 ${conf.id === 'aps-2026' ? 'bg-[#f8f7f5]' : 'bg-white'} rounded-t-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
+                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-t-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all duration-300 ease-out z-10 flex flex-col justify-between ${
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
                         : 'translate-y-[-16px] group-hover:translate-y-[-24px]'
                     }`} style={{ height: '178px' }}>
                       
-                      {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli / APS için özel gerçekçi pul) */}
-                      {conf.id === 'aps-2026' ? (
+                      {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli / Gerçekçi Perfore Pul) */}
+                      <div 
+                        className="absolute top-[29px] right-5 w-12 h-[60px] select-none z-20 overflow-visible"
+                        style={{ filter: 'drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.15))' }}
+                      >
+                        {/* Stamp Body with Perforation Mask */}
                         <div 
-                          className="absolute top-[29px] right-5 w-12 h-[60px] select-none z-20 overflow-visible"
-                          style={{ filter: 'drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.15))' }}
+                          className="w-full h-full bg-white p-[3px] select-none"
+                          style={{
+                            mask: 'url(#stamp-mask-aps)',
+                            WebkitMask: 'url(#stamp-mask-aps)',
+                          }}
                         >
-                          {/* Stamp Body with Perforation Mask */}
-                          <div 
-                            className="w-full h-full bg-white p-[3px] select-none"
-                            style={{
-                              mask: 'url(#stamp-mask-aps)',
-                              WebkitMask: 'url(#stamp-mask-aps)',
-                            }}
-                          >
-                            {/* Inner Stamp Print border and logo */}
-                            <div className="w-full h-full border border-stone-200/70 rounded-xs flex items-center justify-center p-[2px]">
-                              <img 
-                                src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
-                                alt="Postage Stamp" 
-                                className="w-full h-full object-contain" 
-                                onError={(e) => {
-                                  if (e.target.src.includes('clearbit.com')) {
-                                    e.target.style.display = 'none';
-                                  } else {
-                                    e.target.src = `https://logo.clearbit.com/${conf.domain}`;
-                                  }
-                                }}
-                              />
-                            </div>
+                          {/* Inner Stamp Print border and logo */}
+                          <div className="w-full h-full border border-stone-200/70 rounded-xs flex items-center justify-center p-[2px]">
+                            <img 
+                              src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
+                              alt="Postage Stamp" 
+                              className="w-full h-full object-contain" 
+                              onError={(e) => {
+                                if (e.target.src.includes('clearbit.com')) {
+                                  e.target.style.display = 'none';
+                                } else {
+                                  e.target.src = `https://logo.clearbit.com/${conf.domain}`;
+                                }
+                              }}
+                            />
                           </div>
-
-                          {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
-                          {daysLeft < 0 && (
-                            <div className="absolute -top-[10px] -left-6 w-[37px] h-[37px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
-                              <span className="text-[6.5px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
-                                {lang === 'tr' ? (
-                                  <>Başvuru<br/>Kapandı</>
-                                ) : (
-                                  <>Applications<br/>Closed</>
-                                )}
-                              </span>
-                            </div>
-                          )}
                         </div>
-                      ) : (
-                        <div className="absolute top-[29px] right-5 w-12 h-[60px] bg-white p-[3px] shadow-md border-2 border-dashed border-stone-400/80 select-none flex items-center justify-center shrink-0">
-                          <img 
-                            src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
-                            alt="Postage Stamp" 
-                            className="w-full h-full object-contain" 
-                            onError={(e) => {
-                              if (e.target.src.includes('clearbit.com')) {
-                                e.target.style.display = 'none';
-                              } else {
-                                e.target.src = `https://logo.clearbit.com/${conf.domain}`;
-                              }
-                            }}
-                          />
-                          <div className="absolute inset-0 border border-black/5 pointer-events-none" />
 
-                          {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
-                          {daysLeft < 0 && (
-                            <div className="absolute -top-[10px] -left-6 w-[37px] h-[37px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-20 pointer-events-none select-none">
-                              <span className="text-[6.5px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
-                                {lang === 'tr' ? (
-                                  <>Başvuru<br/>Kapandı</>
-                                ) : (
-                                  <>Applications<br/>Closed</>
-                                )}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      )}
+                        {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
+                        {daysLeft < 0 && (
+                          <div className="absolute -top-[10px] -left-6 w-[37px] h-[37px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
+                            <span className="text-[6.5px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
+                              {lang === 'tr' ? (
+                                <>Başvuru<br/>Kapandı</>
+                              ) : (
+                                <>Applications<br/>Closed</>
+                              )}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
                       {/* Mektup İçeriği */}
                       <div className="pr-14 flex flex-col h-full">
@@ -950,106 +919,62 @@ export default function ConferFlatDesign() {
               {/* Drawer Header */}
               <div className={`relative px-16 pt-8 pb-6 bg-gradient-to-br border-b border-t-[12px] transition-colors duration-300 from-white via-[#fcfbfa] to-[#f5f4f0] border-black/5 ${selectedData.style.border}`}>
                 {/* Mektup Pulu Konseptli Logo (Kesikli Çerçeve ve Posta Damgası) */}
-                {selectedData.conf.id === 'aps-2026' ? (
+                <div 
+                  className="absolute right-16 w-16 h-20 select-none z-10 overflow-visible"
+                  style={{ 
+                    top: '50%', 
+                    transform: 'translateY(-50%)',
+                    filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))' 
+                  }}
+                >
+                  {/* Stamp Body with Perforation Mask */}
                   <div 
-                    className="absolute right-16 w-16 h-20 select-none z-10 overflow-visible"
-                    style={{ 
-                      top: '50%', 
-                      transform: 'translateY(-50%)',
-                      filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))' 
+                    className="w-full h-full bg-white p-[4px] select-none"
+                    style={{
+                      mask: 'url(#stamp-mask-aps-drawer)',
+                      WebkitMask: 'url(#stamp-mask-aps-drawer)',
                     }}
                   >
-                    {/* Stamp Body with Perforation Mask */}
-                    <div 
-                      className="w-full h-full bg-white p-[4px] select-none"
-                      style={{
-                        mask: 'url(#stamp-mask-aps-drawer)',
-                        WebkitMask: 'url(#stamp-mask-aps-drawer)',
-                      }}
-                    >
-                      {/* Inner Stamp Print border and logo */}
-                      <div className="w-full h-full border border-stone-200/80 rounded-xs flex items-center justify-center p-[3px]">
-                        <img 
-                          src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`} 
-                          alt="Postage Stamp Logo" 
-                          className="w-full h-full object-contain" 
-                          onError={(e) => {
-                            if (e.target.src.includes('clearbit.com')) {
-                              e.target.style.display = 'none';
-                            } else {
-                              e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
-                            }
-                          }} 
-                        />
-                      </div>
+                    {/* Inner Stamp Print border and logo */}
+                    <div className="w-full h-full border border-stone-200/80 rounded-xs flex items-center justify-center p-[3px]">
+                      <img 
+                        src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`} 
+                        alt="Postage Stamp Logo" 
+                        className="w-full h-full object-contain" 
+                        onError={(e) => {
+                          if (e.target.src.includes('clearbit.com')) {
+                            e.target.style.display = 'none';
+                          } else {
+                            e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
+                          }
+                        }} 
+                      />
                     </div>
-                    {/* Damga Efekti */}
-                    <div className="absolute -bottom-2 -left-2 w-10 h-10 rounded-full border border-black/15 border-dashed pointer-events-none opacity-45 transform -rotate-12 z-20" />
-
-                    {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
-                    {getRemainingDays(selectedData.conf.deadline) < 0 && (
-                      <div className="absolute -top-[14px] -left-10 w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
-                        <span className="text-[8px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
-                          {lang === 'tr' ? (
-                            <>
-                              Başvuru
-                              <br />
-                              Kapandı
-                            </>
-                          ) : (
-                            <>
-                              Applications
-                              <br />
-                              Closed
-                            </>
-                          )}
-                        </span>
-                      </div>
-                    )}
                   </div>
-                ) : (
-                  <div 
-                    className="absolute right-16 w-16 h-20 bg-white p-[5px] shadow-md border-2 border-dashed border-stone-400/80 select-none flex items-center justify-center shrink-0 z-10"
-                    style={{ top: '50%', transform: 'translateY(-50%)' }}
-                  >
-                    <img 
-                      src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`} 
-                      alt="Postage Stamp Logo" 
-                      className="w-full h-full object-contain" 
-                      onError={(e) => {
-                        if (e.target.src.includes('clearbit.com')) {
-                          e.target.style.display = 'none';
-                        } else {
-                          e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
-                        }
-                      }} 
-                    />
-                    {/* Damga Efekti */}
-                    <div className="absolute -bottom-2 -left-2 w-10 h-10 rounded-full border border-black/15 border-dashed pointer-events-none opacity-45 transform -rotate-12" />
-                    <div className="absolute inset-0 border border-black/5" />
+                  {/* Damga Efekti */}
+                  <div className="absolute -bottom-2 -left-2 w-10 h-10 rounded-full border border-black/15 border-dashed pointer-events-none opacity-45 transform -rotate-12 z-20" />
 
-                    {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
-                    {getRemainingDays(selectedData.conf.deadline) < 0 && (
-                      <div className="absolute -top-[14px] -left-10 w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-20 pointer-events-none select-none">
-                        <span className="text-[8px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
-                          {lang === 'tr' ? (
-                            <>
-                              Başvuru
-                              <br />
-                              Kapandı
-                            </>
-                          ) : (
-                            <>
-                              Applications
-                              <br />
-                              Closed
-                            </>
-                          )}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
+                  {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
+                  {getRemainingDays(selectedData.conf.deadline) < 0 && (
+                    <div className="absolute -top-[14px] -left-10 w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
+                      <span className="text-[8px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
+                        {lang === 'tr' ? (
+                          <>
+                            Başvuru
+                            <br />
+                            Kapandı
+                          </>
+                        ) : (
+                          <>
+                            Applications
+                            <br />
+                            Closed
+                          </>
+                        )}
+                      </span>
+                    </div>
+                  )}
+                </div>
 
                 <div className="flex items-start gap-5 mb-4 pr-40">
                   <div className="pt-1">
