@@ -408,7 +408,7 @@ export default function ConferFlatDesign() {
       </header>
 
       {/* ANA GRID DÜZENİ */}
-      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-2">
+      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-10">
         
         {/* SOL STICKY FİLTRE PANELİ */}
         <aside className="lg:col-span-1 lg:sticky lg:top-8 w-full z-20">
