@@ -49,7 +49,10 @@ export const t = {
     nextMonth: "Sonraki Ay",
     months: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
     weekdays: ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
-    countryBandsFootnote: "* Band 1 yüksek gelirli ülkeleri, Band 2 ise orta ve düşük gelirli ülkeleri kapsamaktadır."
+    countryBandsFootnote: "* Band 1 yüksek gelirli ülkeleri, Band 2 ise orta ve düşük gelirli ülkeleri kapsamaktadır.",
+    footerDesigned: "Akademik etkinlik keşfi için tasarlanmıştır.",
+    footerFeedback: "Geri Bildirim",
+    footerContribute: "Katkıda Bulun"
   },
   en: {
     subtitle: "Track prestigious academic events.",
@@ -101,6 +104,9 @@ export const t = {
     nextMonth: "Next Month",
     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     weekdays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    countryBandsFootnote: "* Band 1 includes high-income countries, and Band 2 includes middle and low-income countries."
+    countryBandsFootnote: "* Band 1 includes high-income countries, and Band 2 includes middle and low-income countries.",
+    footerDesigned: "Designed for academic event discovery.",
+    footerFeedback: "Feedback",
+    footerContribute: "Contribute"
   }
 };

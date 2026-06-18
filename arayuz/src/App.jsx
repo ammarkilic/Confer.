@@ -771,6 +771,30 @@ export default function ConferFlatDesign() {
         </section>
       </main>
 
+      {/* FOOTER */}
+      <footer className="max-w-7xl mx-auto mt-16 pt-8 pb-4 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-400 font-fira-regular text-xs select-none">
+        <p className="text-center sm:text-left leading-relaxed">
+          © 2026 Confer. <span className="font-fira-light">{t[lang].subtitle}</span> • {t[lang].footerDesigned}
+        </p>
+        <div className="flex items-center gap-4 shrink-0 font-fira-semibold">
+          <a 
+            href="https://github.com/ammarkilic/Confer" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[#2a2421] transition-colors"
+          >
+            {t[lang].footerContribute}
+          </a>
+          <span className="text-stone-300">•</span>
+          <a 
+            href="mailto:contact@confer.tracker" 
+            className="hover:text-[#2a2421] transition-colors"
+          >
+            {t[lang].footerFeedback}
+          </a>
+        </div>
+      </footer>
+
       {/* CENTRED POPUP DETAILS MODAL */}
       <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 ${selectedData ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {/* Backdrop overlay */}
