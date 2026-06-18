@@ -709,7 +709,9 @@ export default function ConferFlatDesign() {
                         setOpeningCardId(null);
                       }, 300);
                     }} 
-                    className={`relative overflow-hidden rounded-[2rem] h-[210px] w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5`}
+                    className={`relative rounded-[2rem] h-[210px] w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 ${
+                      conf.id === 'eisa-pec-2026' ? 'overflow-visible' : 'overflow-hidden'
+                    }`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className={`absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 ${
@@ -720,7 +722,7 @@ export default function ConferFlatDesign() {
                       openingCardId === conf.id 
                         ? '-translate-y-6 opacity-0 scale-98 duration-300' 
                         : conf.id === 'eisa-pec-2026'
-                          ? 'translate-y-[8px] group-hover:translate-y-[2px]'
+                          ? 'translate-y-[-8px] group-hover:translate-y-[-16px]'
                           : isTrialCard
                             ? 'translate-y-[16px] group-hover:translate-y-1.5'
                             : 'translate-y-[32px] group-hover:translate-y-1.5'
