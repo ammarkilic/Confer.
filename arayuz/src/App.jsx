@@ -1483,12 +1483,12 @@ function GlobeView({ sorted, lang, setSelectedData, setOpeningCardId, formatDate
     lastInteractionRef.current = Date.now();
   };
 
-  // 5 saniye etkileşim olmadığında kendi etrafında yavaşça dönen otomatik dönüş (auto-spin)
+  // 3 saniye etkileşim olmadığında kendi etrafında yavaşça dönen otomatik dönüş (auto-spin)
   React.useEffect(() => {
     let animationId;
     const tick = () => {
       const now = Date.now();
-      if (!isDraggingRef.current && (now - lastInteractionRef.current > 5000)) {
+      if (!isDraggingRef.current && (now - lastInteractionRef.current > 3000)) {
         setRotation(prev => [prev[0] + 0.08, prev[1]]);
       }
       animationId = requestAnimationFrame(tick);
