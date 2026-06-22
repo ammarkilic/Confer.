@@ -1038,24 +1038,29 @@ export default function ConferFlatDesign() {
                   />
                   </div>
 
-                  {/* Başvuru Kapandı Damgası (Sola ve aşağı çekildi, aradaki mesafe açıldı) */}
+                  {/* Başvuru Kapandı Dairesel Damgası (Anasayfadaki kart tasarımıyla birebir aynı) */}
                   {getRemainingDays(selectedData.conf.deadline) < 0 && (
-                    <div className="absolute top-[12px] -left-[76px] w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-45 pointer-events-none select-none">
-                      <span className="text-[8px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
-                        {lang === 'tr' ? (
-                          <>
-                            Başvuru
-                            <br />
-                            Kapandı
-                          </>
-                        ) : (
-                          <>
-                            Applications
-                            <br />
-                            Closed
-                          </>
-                        )}
-                      </span>
+                    <div
+                      className="absolute rounded-full border border-dashed border-[#c92a2a]/80 bg-transparent p-[3px] flex items-center justify-center pointer-events-none select-none z-45"
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        top: '12px',
+                        left: '-76px',
+                        transform: 'rotate(-12deg)',
+                        filter: 'drop-shadow(0px 1.5px 2px rgba(0, 0, 0, 0.1))'
+                      }}
+                    >
+                      {/* İç Daire (Gerçekçi Posta Damgası Hissiyatı) */}
+                      <div className="w-full h-full rounded-full border border-solid border-[#c92a2a]/60 flex flex-col items-center justify-center p-[2px]">
+                        <span className="text-[#c92a2a]/90 uppercase tracking-wide text-center leading-none font-typewriter text-[7.5px]">
+                          {lang === 'tr' ? (
+                            <>Başvuru<br />Kapandı</>
+                          ) : (
+                            <>Apps<br />Closed</>
+                          )}
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>
