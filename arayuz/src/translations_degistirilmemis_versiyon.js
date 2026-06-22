@@ -15,7 +15,7 @@ export const t = {
     closed: "Başvuru Kapandı",
     lastDays: "Son",
     days: "Gün",
-    open: "Açık",
+    open: "Başvurular Açık",
     deadline: "Son başvuru",
     cfp: "Çağrı metni (CFP)",
     lastUpdated1: "Bilgiler en son",
@@ -52,11 +52,7 @@ export const t = {
     countryBandsFootnote: "* Band 1 yüksek gelirli ülkeleri, Band 2 ise orta ve düşük gelirli ülkeleri kapsamaktadır.",
     footerDesigned: "Akademik etkinlik keşfi için tasarlanmıştır.",
     footerFeedback: "Geri Bildirim",
-    footerContribute: "Katkıda Bulun",
-    eventType: "Tür",
-    conference: "Konferans",
-    workshop: "Atölye",
-    summerSchool: "Yaz Okulu"
+    footerContribute: "Katkıda Bulun"
   },
   en: {
     subtitle: "Track prestigious academic events.",
@@ -74,7 +70,7 @@ export const t = {
     closed: "Closed",
     lastDays: "Last",
     days: "Days",
-    open: "Open",
+    open: "Applications Open",
     deadline: "Deadline",
     cfp: "Call for Papers (CFP)",
     lastUpdated1: "Information last verified on",
@@ -111,10 +107,6 @@ export const t = {
     countryBandsFootnote: "* Band 1 includes high-income countries, and Band 2 includes middle and low-income countries.",
     footerDesigned: "Designed for academic event discovery.",
     footerFeedback: "Feedback",
-    footerContribute: "Contribute",
-    eventType: "Type",
-    conference: "Conference",
-    workshop: "Workshop",
-    summerSchool: "Summer School"
+    footerContribute: "Contribute"
   }
 };

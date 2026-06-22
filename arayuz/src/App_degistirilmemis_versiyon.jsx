@@ -13,11 +13,11 @@ const parseMarkdownLinks = (text) => {
       parts.push(text.substring(lastIndex, match.index));
     }
     parts.push(
-      <a
+      <a 
         key={match.index}
-        href={match[2]}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={match[2]} 
+        target="_blank" 
+        rel="noopener noreferrer" 
         className="text-[#ff9ab3] hover:text-[#e07b94] font-semibold underline underline-offset-2 transition-colors inline-flex items-center gap-0.5"
       >
         {match[1]}
@@ -37,11 +37,10 @@ export default function ConferFlatDesign() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedRegions, setSelectedRegions] = useState([]);
-  const [selectedTypes, setSelectedTypes] = useState([]);
   const [sortBy, setSortBy] = useState("deadlineAsc");
-
+  
   const [selectedData, setSelectedData] = useState(null);
-
+  
   // State definitions for elevated features
   const [favorites, setFavorites] = useState(() => {
     try {
@@ -54,25 +53,11 @@ export default function ConferFlatDesign() {
   const [showOpenOnly, setShowOpenOnly] = useState(false);
   const [activeTab, setActiveTab] = useState("cfp");
   const [openingCardId, setOpeningCardId] = useState(null);
-
+  
   // New Calendar States
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
   const [calendarShowBy, setCalendarShowBy] = useState('deadline'); // 'deadline' or 'eventDate'
   const [currentDate, setCurrentDate] = useState(() => new Date(2026, 0, 1)); // start at January 2026
-
-  const [mobileFiltersExpanded, setMobileFiltersExpanded] = useState(false);
-
-  // Lock body scrolling when details modal is open
-  useEffect(() => {
-    if (selectedData) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selectedData]);
 
   // LocalStorage synchronizations
   useEffect(() => {
@@ -132,19 +117,17 @@ export default function ConferFlatDesign() {
     const titleMatch = c.title.toLowerCase().includes(searchTerm.toLowerCase());
     const orgMatch = c.organizer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchSearch = titleMatch || orgMatch;
-
+    
     const confTags = lang === 'tr' ? c.tags : c.tagsEn;
     const matchTag = selectedTags.length === 0 || confTags.some(t => selectedTags.includes(t));
-
+    
     const confRegion = lang === 'tr' ? c.region : c.regionEn;
     const matchLocation = selectedRegions.length === 0 || selectedRegions.includes(confRegion);
 
-    const matchType = selectedTypes.length === 0 || selectedTypes.includes(c.type);
-
     const matchFavorites = !showFavoritesOnly || favorites.includes(c.id);
     const matchOpenOnly = !showOpenOnly || getRemainingDays(c.deadline) >= 0;
-
-    return matchSearch && matchTag && matchLocation && matchType && matchFavorites && matchOpenOnly;
+    
+    return matchSearch && matchTag && matchLocation && matchFavorites && matchOpenOnly;
   });
 
   const sorted = [...filtered].sort((a, b) => {
@@ -166,20 +149,20 @@ export default function ConferFlatDesign() {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
     if (diffDays < 0) {
-      return {
-        text: t[lang].closed,
-        style: "bg-red-50 text-red-700 border border-red-200/80 font-semibold"
+      return { 
+        text: t[lang].closed, 
+        style: "bg-red-50 text-red-700 border border-red-200/80 font-semibold" 
       };
     }
     if (diffDays <= 15) {
-      return {
-        text: `${t[lang].lastDays} ${diffDays} ${t[lang].days}`,
-        style: "bg-red-50 text-red-800 border border-red-200 font-semibold"
+      return { 
+        text: `${t[lang].lastDays} ${diffDays} ${t[lang].days}`, 
+        style: "bg-red-50 text-red-800 border border-red-200 font-semibold" 
       };
     }
-    return {
-      text: t[lang].open,
-      style: "bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold"
+    return { 
+      text: t[lang].open, 
+      style: "bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold" 
     };
   };
 
@@ -191,15 +174,15 @@ export default function ConferFlatDesign() {
     const title = encodeURIComponent(conf.title);
     const loc = lang === 'tr' ? conf.location : conf.locationEn;
     const details = encodeURIComponent(`${conf.organizer}\n\n${conf.link}`);
-
+    
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${encodeURIComponent(loc)}`;
   };
 
   const elegantStyle = {
-    cardBg: "bg-[#EFE9E3]",
-    border: "border-[#d6cdbf]/60",
-    text: "text-[#5c554a]",
-    tagBg: "bg-[#EFE9E3]/35 text-[#5c554a]"
+    cardBg: "bg-[#e8e2d5]",
+    border: "border-[#cfc6b5]/50",
+    text: "text-[#5c5043]",
+    tagBg: "bg-[#e8e2d5]/45 text-[#5c5043]"
   };
 
   const retroStyles = Array(6).fill(elegantStyle);
@@ -216,12 +199,12 @@ export default function ConferFlatDesign() {
 
   const daysInCurrentMonth = getDaysInMonth(year, month);
   const firstDayIndex = getFirstDayIndex(year, month);
-
+  
   const prevMonthDate = new Date(year, month - 1, 1);
   const daysInPrevMonth = getDaysInMonth(prevMonthDate.getFullYear(), prevMonthDate.getMonth());
-
+  
   const calendarCells = [];
-
+  
   // Fill previous month padding days
   for (let i = firstDayIndex - 1; i >= 0; i--) {
     calendarCells.push({
@@ -231,7 +214,7 @@ export default function ConferFlatDesign() {
       isPadding: true
     });
   }
-
+  
   // Fill current month days
   for (let i = 1; i <= daysInCurrentMonth; i++) {
     calendarCells.push({
@@ -241,7 +224,7 @@ export default function ConferFlatDesign() {
       isPadding: false
     });
   }
-
+  
   // Fill next month padding days
   const remainingCells = 42 - calendarCells.length;
   for (let i = 1; i <= remainingCells; i++) {
@@ -276,14 +259,14 @@ export default function ConferFlatDesign() {
 
   return (
     <div className="min-h-screen font-sans p-4 sm:p-8 relative transition-colors duration-300 text-[#2a2421]">
-
+      
       {/* SVG Mask Definition for Perforated Stamps */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0 }}>
         <defs>
           <mask id="stamp-mask-aps" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="60">
             {/* White base rect */}
             <rect x="0" y="0" width="48" height="60" fill="white" />
-
+            
             {/* Top border perforations (x spacing 8px, y = 0) */}
             <circle cx="0" cy="0" r="3" fill="black" />
             <circle cx="8" cy="0" r="3" fill="black" />
@@ -320,7 +303,7 @@ export default function ConferFlatDesign() {
           <mask id="stamp-mask-aps-drawer" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="80">
             {/* White base rect */}
             <rect x="0" y="0" width="64" height="80" fill="white" />
-
+            
             {/* Top border perforations (x spacing 8px, y = 0) */}
             <circle cx="0" cy="0" r="3" fill="black" />
             <circle cx="8" cy="0" r="3" fill="black" />
@@ -372,25 +355,27 @@ export default function ConferFlatDesign() {
           </h1>
           <p className="text-stone-500 font-fira-regular text-xs md:text-[13px] tracking-tight whitespace-nowrap mt-1">{t[lang].subtitle}</p>
         </div>
-
+        
         <div className="flex flex-wrap items-center gap-3">
           {/* View Mode Selector */}
           <div className="flex bg-white rounded-full p-0.5 shadow-sm border border-black/5">
-            <button
-              onClick={() => setViewMode('list')}
-              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${viewMode === 'list'
-                ? 'bg-[#2a2421] text-white shadow-sm'
-                : 'bg-transparent text-[#5a5451] hover:bg-black/5'
-                }`}
+            <button 
+              onClick={() => setViewMode('list')} 
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                viewMode === 'list' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
+                  : 'bg-transparent text-[#5a5451] hover:bg-black/5'
+              }`}
             >
               {t[lang].listView}
             </button>
-            <button
-              onClick={() => setViewMode('calendar')}
-              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${viewMode === 'calendar'
-                ? 'bg-[#2a2421] text-white shadow-sm'
-                : 'bg-transparent text-[#5a5451] hover:bg-black/5'
-                }`}
+            <button 
+              onClick={() => setViewMode('calendar')} 
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                viewMode === 'calendar' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
+                  : 'bg-transparent text-[#5a5451] hover:bg-black/5'
+              }`}
             >
               {t[lang].calendarView}
             </button>
@@ -398,21 +383,23 @@ export default function ConferFlatDesign() {
 
           {/* Language Selector */}
           <div className="flex bg-white rounded-full p-0.5 shadow-sm border border-black/5">
-            <button
-              onClick={() => { setLang('tr'); setSelectedTags([]); setSelectedRegions([]); setSelectedTypes([]); }}
-              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${lang === 'tr'
-                ? 'bg-[#2a2421] text-white shadow-sm'
-                : 'bg-transparent text-[#5a5451] hover:bg-black/5'
-                }`}
+            <button 
+              onClick={() => { setLang('tr'); setSelectedTags([]); setSelectedRegions([]); }} 
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                lang === 'tr' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
+                  : 'bg-transparent text-[#5a5451] hover:bg-black/5'
+              }`}
             >
               TR
             </button>
-            <button
-              onClick={() => { setLang('en'); setSelectedTags([]); setSelectedRegions([]); setSelectedTypes([]); }}
-              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${lang === 'en'
-                ? 'bg-[#2a2421] text-white shadow-sm'
-                : 'bg-transparent text-[#5a5451] hover:bg-black/5'
-                }`}
+            <button 
+              onClick={() => { setLang('en'); setSelectedTags([]); setSelectedRegions([]); }} 
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                lang === 'en' 
+                  ? 'bg-[#2a2421] text-white shadow-sm' 
+                  : 'bg-transparent text-[#5a5451] hover:bg-black/5'
+              }`}
             >
               EN
             </button>
@@ -421,8 +408,8 @@ export default function ConferFlatDesign() {
       </header>
 
       {/* ANA GRID DÜZENİ */}
-      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-2 lg:pt-8">
-
+      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start pt-10">
+        
         {/* SOL STICKY FİLTRE PANELİ */}
         <aside className="lg:col-span-1 lg:sticky lg:top-8 w-full z-20">
           <div className="rounded-2xl p-6 flex flex-col gap-4 shadow-md border border-black/5 bg-gradient-to-br from-white via-[#fcfbfa] to-[#f6f5f2]">
@@ -432,12 +419,11 @@ export default function ConferFlatDesign() {
                   {lang === 'tr' ? 'Filtrele' : 'Filter'}
                 </h2>
               </div>
-              {(selectedTags.length > 0 || selectedRegions.length > 0 || selectedTypes.length > 0 || searchTerm !== "" || showFavoritesOnly || showOpenOnly) && (
-                <button
+              {(selectedTags.length > 0 || selectedRegions.length > 0 || searchTerm !== "" || showFavoritesOnly || showOpenOnly) && (
+                <button 
                   onClick={() => {
                     setSelectedTags([]);
                     setSelectedRegions([]);
-                    setSelectedTypes([]);
                     setSearchTerm("");
                     setShowFavoritesOnly(false);
                     setShowOpenOnly(false);
@@ -448,165 +434,117 @@ export default function ConferFlatDesign() {
                 </button>
               )}
             </div>
-
+            
             <div className="space-y-4">
               {/* Search input */}
               <div>
-                <input
-                  type="text"
-                  placeholder={t[lang].searchPlaceholder}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full border rounded-2xl px-4 py-3 text-xs focus:outline-none focus:ring-2 transition-all font-fira-regular font-normal shadow-inner bg-white border-black/5 text-[#2a2421] focus:ring-[#2a2421] placeholder:text-[11px]"
+                <input 
+                  type="text" 
+                  placeholder={t[lang].searchPlaceholder} 
+                  value={searchTerm} 
+                  onChange={(e) => setSearchTerm(e.target.value)} 
+                  className="w-full border rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all font-fira-regular font-normal shadow-inner bg-white border-black/5 text-[#2a2421] focus:ring-[#2a2421]" 
                 />
               </div>
 
-              {/* Mobile Advanced Filters Toggle Button */}
-              <button
-                onClick={() => setMobileFiltersExpanded(!mobileFiltersExpanded)}
-                className="flex lg:hidden w-full items-center justify-between gap-2 border border-[#2a2421]/10 bg-[#2a2421] hover:bg-[#3d3430] text-[#fcfbfa] text-xs font-fira-semibold px-4 py-3 rounded-2xl select-none transition-all duration-300 shadow-sm"
-              >
-                <span>{lang === 'tr' ? (mobileFiltersExpanded ? 'Gelişmiş Filtreleri Gizle' : 'Gelişmiş Filtreleri Göster') : (mobileFiltersExpanded ? 'Hide Advanced Filters' : 'Show Advanced Filters')}</span>
-                <span className={`text-[10px] transition-transform duration-300 ${mobileFiltersExpanded ? 'rotate-180' : ''}`}>▼</span>
-              </button>
+              {/* Favorites & Open Applications Checkboxes */}
+              <div className="flex flex-col gap-2">
+                <label className="flex items-center gap-2.5 text-sm cursor-pointer p-2.5 rounded-xl border border-black/5 bg-white text-[#2a2421] select-none shadow-sm">
+                  <input 
+                    type="checkbox" 
+                    checked={showFavoritesOnly} 
+                    onChange={(e) => setShowFavoritesOnly(e.target.checked)}
+                    className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
+                  />
+                  <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].favoritesOnly}</span>
+                </label>
 
-              {/* Advanced Filters Content (Collapsible on Mobile, Always Visible on Desktop) */}
-              <div className={`${mobileFiltersExpanded ? 'flex' : 'hidden lg:flex'} flex-col gap-4`}>
-                {/* Favorites & Open Applications Checkboxes */}
-                <div className="flex flex-col gap-2">
-                  <label className="flex items-center gap-2.5 text-sm cursor-pointer p-2.5 rounded-xl border border-black/5 bg-white text-[#2a2421] select-none shadow-sm">
-                    <input
-                      type="checkbox"
-                      checked={showFavoritesOnly}
-                      onChange={(e) => setShowFavoritesOnly(e.target.checked)}
-                      className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
-                    />
-                    <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].favoritesOnly}</span>
-                  </label>
+                <label className="flex items-center gap-2.5 text-sm cursor-pointer p-2.5 rounded-xl border border-black/5 bg-white text-[#2a2421] select-none shadow-sm">
+                  <input 
+                    type="checkbox" 
+                    checked={showOpenOnly} 
+                    onChange={(e) => setShowOpenOnly(e.target.checked)}
+                    className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
+                  />
+                  <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].openOnly}</span>
+                </label>
+              </div>
 
-                  <label className="flex items-center gap-2.5 text-sm cursor-pointer p-2.5 rounded-xl border border-black/5 bg-white text-[#2a2421] select-none shadow-sm">
-                    <input
-                      type="checkbox"
-                      checked={showOpenOnly}
-                      onChange={(e) => setShowOpenOnly(e.target.checked)}
-                      className="w-4 h-4 rounded focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
-                    />
-                    <span className="font-fira-regular font-semibold text-xs leading-none">{t[lang].openOnly}</span>
-                  </label>
-                </div>
+              {/* Discipline filter */}
+              <div>
+                <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
+                  <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
+                    <span>{t[lang].discipline} {selectedTags.length > 0 && `(${selectedTags.length})`}</span>
+                    <span className="transition-transform duration-300 group-open:rotate-180">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                  </summary>
+                  <div className="p-3 border-t max-h-48 overflow-y-auto space-y-2 custom-scrollbar shadow-inner border-black/5 bg-[#faf9f6]">
+                    {allTags.map(tag => (
+                      <label key={tag} className="flex items-center gap-2.5 text-sm cursor-pointer p-1.5 rounded-xl transition-colors select-none text-[#2a2421] hover:bg-black/[0.02]">
+                        <input 
+                          type="checkbox" 
+                          checked={selectedTags.includes(tag)} 
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedTags([...selectedTags, tag]);
+                            } else {
+                              setSelectedTags(selectedTags.filter(t => t !== tag));
+                            }
+                          }}
+                          className="w-4 h-4 rounded border-black/10 focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
+                        />
+                        <span className="font-fira-regular font-semibold text-xs leading-none">{tag}</span>
+                      </label>
+                    ))}
+                  </div>
+                </details>
+              </div>
 
-                {/* Discipline filter */}
-                <div>
-                  <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
-                      <span>{t[lang].discipline} {selectedTags.length > 0 && `(${selectedTags.length})`}</span>
-                      <span className="transition-transform duration-300 group-open:rotate-180">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </span>
-                    </summary>
-                    <div className="p-3 border-t max-h-48 overflow-y-auto space-y-2 custom-scrollbar shadow-inner border-black/5 bg-[#faf9f6]">
-                      {allTags.map(tag => (
-                        <label key={tag} className="flex items-center gap-2.5 text-sm cursor-pointer p-1.5 rounded-xl transition-colors select-none text-[#2a2421] hover:bg-black/[0.02]">
-                          <input
-                            type="checkbox"
-                            checked={selectedTags.includes(tag)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setSelectedTags([...selectedTags, tag]);
-                              } else {
-                                setSelectedTags(selectedTags.filter(t => t !== tag));
-                              }
-                            }}
-                            className="w-4 h-4 rounded border-black/10 focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
-                          />
-                          <span className="font-fira-regular font-semibold text-xs leading-none">{tag}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </details>
-                </div>
+              {/* Region filter */}
+              <div>
+                <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
+                  <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
+                    <span>{t[lang].region} {selectedRegions.length > 0 && `(${selectedRegions.length})`}</span>
+                    <span className="transition-transform duration-300 group-open:rotate-180">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                  </summary>
+                  <div className="p-3 border-t space-y-2 shadow-inner border-black/5 bg-[#faf9f6]">
+                    {allLocations.map(loc => (
+                      <label key={loc} className="flex items-center gap-2.5 text-sm cursor-pointer p-1.5 rounded-xl transition-colors select-none text-[#2a2421] hover:bg-black/[0.02]">
+                        <input 
+                          type="checkbox" 
+                          checked={selectedRegions.includes(loc)} 
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedRegions([...selectedRegions, loc]);
+                            } else {
+                              setSelectedRegions(selectedRegions.filter(l => l !== loc));
+                            }
+                          }}
+                          className="w-4 h-4 rounded border-black/10 focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
+                        />
+                        <span className="font-fira-regular font-semibold text-xs leading-none">{loc}</span>
+                      </label>
+                    ))}
+                  </div>
+                </details>
+              </div>
 
-                {/* Region filter */}
-                <div>
-                  <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
-                      <span>{t[lang].region} {selectedRegions.length > 0 && `(${selectedRegions.length})`}</span>
-                      <span className="transition-transform duration-300 group-open:rotate-180">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </span>
-                    </summary>
-                    <div className="p-3 border-t space-y-2 shadow-inner border-black/5 bg-[#faf9f6]">
-                      {allLocations.map(loc => (
-                        <label key={loc} className="flex items-center gap-2.5 text-sm cursor-pointer p-1.5 rounded-xl transition-colors select-none text-[#2a2421] hover:bg-black/[0.02]">
-                          <input
-                            type="checkbox"
-                            checked={selectedRegions.includes(loc)}
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                setSelectedRegions([...selectedRegions, loc]);
-                              } else {
-                                setSelectedRegions(selectedRegions.filter(l => l !== loc));
-                              }
-                            }}
-                            className="w-4 h-4 rounded border-black/10 focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
-                          />
-                          <span className="font-fira-regular font-semibold text-xs leading-none">{loc}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </details>
-                </div>
-
-                {/* Type filter */}
-                <div>
-                  <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
-                      <span>{t[lang].eventType} {selectedTypes.length > 0 && `(${selectedTypes.length})`}</span>
-                      <span className="transition-transform duration-300 group-open:rotate-180">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </span>
-                    </summary>
-                    <div className="p-3 border-t space-y-2 shadow-inner border-black/5 bg-[#faf9f6]">
-                      {['konferans', 'atölye', 'yaz okulu'].map(typeKey => {
-                        const typeLabel = typeKey === 'konferans' ? t[lang].conference
-                          : typeKey === 'atölye' ? t[lang].workshop
-                            : t[lang].summerSchool;
-                        return (
-                          <label key={typeKey} className="flex items-center gap-2.5 text-sm cursor-pointer p-1.5 rounded-xl transition-colors select-none text-[#2a2421] hover:bg-black/[0.02]">
-                            <input
-                              type="checkbox"
-                              checked={selectedTypes.includes(typeKey)}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setSelectedTypes([...selectedTypes, typeKey]);
-                                } else {
-                                  setSelectedTypes(selectedTypes.filter(t => t !== typeKey));
-                                }
-                              }}
-                              className="w-4 h-4 rounded border-black/10 focus:ring-offset-0 cursor-pointer accent-[#2a2421]"
-                            />
-                            <span className="font-fira-regular font-semibold text-xs leading-none">{typeLabel}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </details>
-                </div>
-
-                {/* Sorting */}
-                <div>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="select-custom w-full border rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 font-fira-regular font-normal shadow-sm cursor-pointer bg-white border-black/5 text-[#2a2421] ring-[#2a2421]"
-                  >
-                    <option value="deadlineAsc">{t[lang].sortDeadlineAsc}</option>
-                    <option value="deadlineDesc">{t[lang].sortDeadlineDesc}</option>
-                    <option value="dateAsc">{t[lang].sortDateAsc}</option>
-                    <option value="titleAsc">{t[lang].sortTitleAsc}</option>
-                    <option value="grantsFirst">{t[lang].sortGrantsFirst}</option>
-                  </select>
-                </div>
+              {/* Sorting */}
+              <div>
+                <select 
+                  value={sortBy} 
+                  onChange={(e) => setSortBy(e.target.value)} 
+                  className="select-custom w-full border rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 font-fira-regular font-normal shadow-sm cursor-pointer bg-white border-black/5 text-[#2a2421] ring-[#2a2421]"
+                >
+                  <option value="deadlineAsc">{t[lang].sortDeadlineAsc}</option>
+                  <option value="deadlineDesc">{t[lang].sortDeadlineDesc}</option>
+                  <option value="dateAsc">{t[lang].sortDateAsc}</option>
+                  <option value="titleAsc">{t[lang].sortTitleAsc}</option>
+                  <option value="grantsFirst">{t[lang].sortGrantsFirst}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -620,17 +558,17 @@ export default function ConferFlatDesign() {
               {/* Takvim Kontrol Menüsü */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-white border border-black/5 p-2 rounded-2xl shadow-sm">
                 <div className="flex items-center gap-2">
-                  <button
+                  <button 
                     onClick={handlePrevMonth}
                     className="w-8 h-8 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-xs transition-colors text-sm font-bold"
                     title={t[lang].prevMonth}
                   >
                     ‹
                   </button>
-
+                  
                   <div className="flex items-center gap-1">
-                    <select
-                      value={month}
+                    <select 
+                      value={month} 
                       onChange={(e) => setCurrentDate(new Date(year, parseInt(e.target.value), 1))}
                       className="select-custom bg-transparent border-none text-sm font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-0.5 pl-1.5 pr-5"
                     >
@@ -638,9 +576,9 @@ export default function ConferFlatDesign() {
                         <option key={idx} value={idx}>{mName}</option>
                       ))}
                     </select>
-
-                    <select
-                      value={year}
+                    
+                    <select 
+                      value={year} 
                       onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value), month, 1))}
                       className="select-custom bg-transparent border-none text-sm font-fira-semibold text-[#2a2421] cursor-pointer focus:ring-0 py-0.5 pl-1.5 pr-5"
                     >
@@ -649,8 +587,8 @@ export default function ConferFlatDesign() {
                       <option value={2027}>2027</option>
                     </select>
                   </div>
-
-                  <button
+                  
+                  <button 
                     onClick={handleNextMonth}
                     className="w-8 h-8 flex items-center justify-center bg-[#faf9f6] hover:bg-black/5 text-[#2a2421] border border-black/5 rounded-full shadow-xs transition-colors text-sm font-bold"
                     title={t[lang].nextMonth}
@@ -662,21 +600,23 @@ export default function ConferFlatDesign() {
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] font-fira-semibold text-neutral-500">{t[lang].calendarShowBy}:</span>
                   <div className="flex bg-[#faf9f6] rounded-full p-0.5 border border-black/5 shadow-inner">
-                    <button
+                    <button 
                       onClick={() => setCalendarShowBy('deadline')}
-                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${calendarShowBy === 'deadline'
-                        ? 'bg-[#2a2421] text-white shadow-sm'
-                        : 'bg-transparent text-neutral-600 hover:bg-black/5'
-                        }`}
+                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                        calendarShowBy === 'deadline' 
+                          ? 'bg-[#2a2421] text-white shadow-sm' 
+                          : 'bg-transparent text-neutral-600 hover:bg-black/5'
+                      }`}
                     >
                       {t[lang].showByDeadline}
                     </button>
-                    <button
+                    <button 
                       onClick={() => setCalendarShowBy('eventDate')}
-                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${calendarShowBy === 'eventDate'
-                        ? 'bg-[#2a2421] text-white shadow-sm'
-                        : 'bg-transparent text-neutral-600 hover:bg-black/5'
-                        }`}
+                      className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${
+                        calendarShowBy === 'eventDate' 
+                          ? 'bg-[#2a2421] text-white shadow-sm' 
+                          : 'bg-transparent text-neutral-600 hover:bg-black/5'
+                      }`}
                     >
                       {t[lang].showByEventDate}
                     </button>
@@ -684,58 +624,55 @@ export default function ConferFlatDesign() {
                 </div>
               </div>
 
-              {/* Scrollable grid wrapper for mobile */}
-              <div className="overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
-                <div className="min-w-[640px] md:min-w-0">
-                  {/* Hafta Günleri Başlığı */}
-                  <div className="grid grid-cols-7 gap-2 mb-2 text-center text-[9px] font-fira-semibold uppercase tracking-widest text-stone-500">
-                    {t[lang].weekdays.map(d => (
-                      <div key={d} className="py-2 bg-white/50 border border-black/[0.02] rounded-xl">{d}</div>
-                    ))}
-                  </div>
+              {/* Hafta Günleri Başlığı */}
+              <div className="grid grid-cols-7 gap-2 mb-2 text-center text-[9px] font-fira-semibold uppercase tracking-widest text-stone-500">
+                {t[lang].weekdays.map(d => (
+                  <div key={d} className="py-2 bg-white/50 border border-black/[0.02] rounded-xl">{d}</div>
+                ))}
+              </div>
 
-                  {/* Gün Hücreleri */}
-                  <div className="grid grid-cols-7 gap-2">
-                    {calendarCells.map((cell, idx) => {
-                      const cellConfs = getConferencesForCell(cell);
-                      const isToday = new Date().toDateString() === new Date(cell.year, cell.month, cell.day).toDateString();
-
-                      return (
-                        <div
-                          key={idx}
-                          className={`border rounded-2xl p-2 min-h-[90px] flex flex-col justify-between transition-all duration-300 relative ${cell.isPadding
-                            ? 'opacity-40 bg-gray-50/50'
-                            : 'bg-white hover:bg-neutral-50 hover:shadow-xs'
-                            } ${isToday ? 'ring-2 ring-[#2a2421]' : 'border-black/5'
-                            }`}
-                        >
-                          <span className={`text-xs font-fira-semibold ${cell.isPadding ? 'text-neutral-400' : 'text-neutral-700'}`}>
-                            {cell.day}
-                          </span>
-                          <div className="flex flex-col gap-1 mt-1 overflow-y-auto max-h-[60px] custom-scrollbar">
-                            {cellConfs.map(conf => {
-                              const confIndex = conferences.findIndex(c => c.id === conf.id);
-                              const style = retroStyles[confIndex >= 0 ? confIndex % retroStyles.length : 0];
-                              return (
-                                <div
-                                  key={conf.id}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedData({ conf, style });
-                                  }}
-                                  className={`text-[8px] font-fira-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border truncate w-full hover:scale-105 transition-transform text-center cursor-pointer select-none ${style.tagBg} ${style.border} ${style.text}`}
-                                  title={`${conf.title} - ${conf.organizer}`}
-                                >
-                                  {conf.id.split('-')[0].toUpperCase()}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+              {/* Gün Hücreleri */}
+              <div className="grid grid-cols-7 gap-2">
+                {calendarCells.map((cell, idx) => {
+                  const cellConfs = getConferencesForCell(cell);
+                  const isToday = new Date().toDateString() === new Date(cell.year, cell.month, cell.day).toDateString();
+                  
+                  return (
+                    <div 
+                      key={idx}
+                      className={`border rounded-2xl p-2 min-h-[90px] flex flex-col justify-between transition-all duration-300 relative ${
+                        cell.isPadding 
+                          ? 'opacity-40 bg-gray-50/50' 
+                          : 'bg-white hover:bg-neutral-50 hover:shadow-xs'
+                      } ${
+                        isToday ? 'ring-2 ring-[#2a2421]' : 'border-black/5'
+                      }`}
+                    >
+                      <span className={`text-xs font-fira-semibold ${cell.isPadding ? 'text-neutral-400' : 'text-neutral-700'}`}>
+                        {cell.day}
+                      </span>
+                      <div className="flex flex-col gap-1 mt-1 overflow-y-auto max-h-[60px] custom-scrollbar">
+                        {cellConfs.map(conf => {
+                          const confIndex = conferences.findIndex(c => c.id === conf.id);
+                          const style = retroStyles[confIndex >= 0 ? confIndex % retroStyles.length : 0];
+                          return (
+                            <div 
+                              key={conf.id}
+                              onClick={(e) => { 
+                                e.stopPropagation(); 
+                                setSelectedData({ conf, style }); 
+                                }}
+                              className={`text-[8px] font-fira-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border truncate w-full hover:scale-105 transition-transform text-center cursor-pointer select-none ${style.tagBg} ${style.border} ${style.text}`}
+                              title={`${conf.title} - ${conf.organizer}`}
+                            >
+                              {conf.id.split('-')[0].toUpperCase()}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ) : (
@@ -751,99 +688,84 @@ export default function ConferFlatDesign() {
                 const tapeRotation = (index % 2 === 0) ? 'rotate-[2.5deg]' : '-rotate-[2.5deg]';
 
                 return (
-                  <div
-                    key={conf.id}
+                  <div 
+                    key={conf.id} 
                     onClick={() => {
                       if (openingCardId) return;
                       setOpeningCardId(conf.id);
                       setTimeout(() => {
                         setSelectedData({ conf, style });
-                      }, 400);
-                    }}
+                      }, 300);
+                    }} 
                     className={`relative w-full ${style.cardBg} border ${style.border} shadow-sm cursor-pointer group select-none transition-all duration-300 hover:shadow-md hover:-translate-y-1.5 overflow-visible h-[190px] rounded-xl`}
                   >
                     {/* Zarf İç Kılıf (Açık Renk) */}
                     <div className="absolute inset-x-4 bottom-4 bg-white/40 rounded-xl z-0 top-[96px]" />
-                    {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
-                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${openingCardId === conf.id
-                      ? 'translate-y-[-30px] duration-300 ease-out'
-                      : 'translate-y-[-16px] group-hover:translate-y-[-24px] group-active:translate-y-[-24px] duration-300 ease-out'
-                      }`} style={{ height: '178px' }}>
-
-                      {/* Polaroid Fotoğraf Çerçevesi (Tüm Kartlar için) */}
-                      <div
-                        className={`absolute right-7 top-[36px] w-[96px] h-[118px] bg-white p-1.5 pb-6 shadow-md border border-stone-200/80 rounded-sm z-30 transition-all duration-300 ease-out pointer-events-none select-none flex flex-col justify-between ${openingCardId === conf.id
-                            ? 'translate-y-[-8px] rotate-[8deg]'
-                            : 'translate-y-0 rotate-[6deg] group-hover:translate-y-[-4px] group-hover:rotate-[9deg] group-active:translate-y-[-4px] group-active:rotate-[9deg]'
-                          }`}
-                        style={{
-                          filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))'
-                        }}
+                     {/* Mektup Kağıdı (İçinden Çıkan Kart) */}
+                    <div className={`absolute inset-x-4 bg-[#f8f7f5] rounded-xl pt-[33px] pb-4 px-5 shadow-sm border border-stone-200/80 transition-all z-10 flex flex-col justify-between ${
+                      openingCardId === conf.id 
+                        ? 'translate-y-[-30px] duration-300 ease-out' 
+                        : 'translate-y-[-16px] group-hover:translate-y-[-24px] duration-300 ease-out'
+                    }`} style={{ height: '178px' }}>
+                      
+                      {/* Mektup Pulu Logo (Etrafı Kesikli Çerçeveli / Gerçekçi Perfore Pul) */}
+                      <div 
+                        className="absolute top-[29px] right-5 w-12 h-[60px] select-none z-20 overflow-visible"
+                        style={{ filter: 'drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.15))' }}
                       >
-                        {/* İç Görsel Alanı (Tam Kare Polaroid Oranı) */}
-                        <div className={`w-full aspect-square flex items-center justify-center overflow-hidden border border-stone-200/60 ${conf.id === 'pollen-2026' ? 'bg-[#5172b5]' :
-                            conf.id === 'aaa-2026' ? 'bg-[#b20837]' :
-                              conf.id === 'apsa-2026' ? 'bg-[#f5f4f0]' :
-                                conf.id === 'sant-2026' ? 'bg-[#004b89]' :
-                                  'bg-stone-50'
-                          }`}>
-                          <img
-                            src={conf.logo || `https://logo.clearbit.com/${conf.domain}`}
-                            alt="Polaroid Inner"
-                            className={`w-full h-full object-contain ${conf.id === 'apsa-2026' ? 'p-1.5' :
-                                ['pollen-2026', 'aaa-2026', 'sant-2026'].includes(conf.id) ? 'p-0' : 'p-1'
-                              }`}
-                            onError={(e) => {
-                              if (e.target.src.includes('clearbit.com')) {
-                                e.target.style.display = 'none';
-                              } else {
-                                e.target.src = `https://logo.clearbit.com/${conf.domain}`;
-                              }
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Başvuru Kapandı Dairesel Damgası (Tüm Kartlar için, Polaroid veya Pul Üzerinde En Önde, Mektup Kağıdında Sabit) */}
-                      {daysLeft < 0 && (
-                        <div
-                          className="absolute rounded-full border border-dashed border-[#c92a2a]/80 bg-transparent p-[3px] flex items-center justify-center pointer-events-none select-none transition-all duration-300 z-40"
+                        {/* Stamp Body with Perforation Mask */}
+                        <div 
+                          className="w-full h-full bg-white p-[3px] select-none"
                           style={{
-                            width: '48px',
-                            height: '48px',
-                            top: '20px',
-                            right: '140px',
-                            transform: 'rotate(-15deg)',
-                            filter: 'drop-shadow(0px 1.5px 2px rgba(0, 0, 0, 0.1))'
+                            mask: 'url(#stamp-mask-aps)',
+                            WebkitMask: 'url(#stamp-mask-aps)',
                           }}
                         >
-                          {/* İç Daire (Gerçekçi Posta Damgası Hissiyatı) */}
-                          <div className="w-full h-full rounded-full border border-solid border-[#c92a2a]/60 flex flex-col items-center justify-center p-[2px]">
-                            <span className="text-[#c92a2a]/90 uppercase tracking-wide text-center leading-none font-typewriter text-[7.5px]">
+                          {/* Inner Stamp Print border and logo */}
+                          <div className="w-full h-full border border-stone-200/70 rounded-xs flex items-center justify-center p-[2px]">
+                            <img 
+                              src={conf.logo || `https://logo.clearbit.com/${conf.domain}`} 
+                              alt="Postage Stamp" 
+                              className="w-full h-full object-contain" 
+                              onError={(e) => {
+                                if (e.target.src.includes('clearbit.com')) {
+                                  e.target.style.display = 'none';
+                                } else {
+                                  e.target.src = `https://logo.clearbit.com/${conf.domain}`;
+                                }
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
+                        {daysLeft < 0 && (
+                          <div className="absolute -top-[10px] -left-6 w-[37px] h-[37px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
+                            <span className="text-[6.5px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
                               {lang === 'tr' ? (
-                                <>Başvuru<br />Kapandı</>
+                                <>Başvuru<br/>Kapandı</>
                               ) : (
-                                <>Apps<br />Closed</>
+                                <>Applications<br/>Closed</>
                               )}
                             </span>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
                       {/* Mektup İçeriği */}
-                      <div className="flex flex-col h-full pr-[110px]">
+                      <div className="pr-14 flex flex-col h-full">
                         {/* ETIKETLER */}
                         <div className="flex flex-wrap gap-1 mb-2">
                           {displayTags.map(tag => (
-                            <span
-                              key={tag}
+                            <span 
+                              key={tag} 
                               className={`text-[11px] font-normal px-2.5 py-0.5 rounded-md font-fira-light ${style.tagBg} ${style.text}`}
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
-
+                        
                         {/* BAŞLIK */}
                         <h2 className="text-base leading-snug tracking-tight text-[#2a2421] font-fira-semibold pr-2 line-clamp-2">
                           {conf.title}
@@ -856,15 +778,18 @@ export default function ConferFlatDesign() {
                     </div>
 
                     {/* Zarf Ön Kapağı / Ön Bölme */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-4px_12px_rgba(42,36,33,0.08)] transition-transform duration-300 ease-out translate-y-0`}>
-
+                    <div className={`absolute bottom-0 left-0 right-0 h-[42%] ${style.cardBg} border-t ${style.border} rounded-b-xl z-20 flex items-center justify-between pl-6 pr-6 shadow-[0_-4px_12px_rgba(42,36,33,0.08)] transition-transform duration-300 ease-out ${
+                      openingCardId === conf.id ? 'translate-y-[12px]' : 'translate-y-0'
+                    }`}>
+                      
                       {/* Zarf Mührü / Son Başvuru Durum Mührü (Envelope Seal / Vintage Washi Tape) */}
                       {daysLeft >= 0 && (
                         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none select-none filter drop-shadow-[0_2px_3px_rgba(0,0,0,0.12)]">
-                          <span className={`text-[9.5px] font-fira-bold uppercase tracking-wider px-3 py-1 border-y border-black/5 inline-block tape-curled ${tapeRotation} ${daysLeft <= 15
-                            ? "bg-[#FD9B4A]/60 text-[#2a2421]"
-                            : "bg-[#9FCB98]/50 text-[#2a2421]"
-                            }`}>
+                          <span className={`text-[9.5px] font-fira-bold uppercase tracking-wider px-3 py-1 border-y border-black/5 inline-block tape-curled ${tapeRotation} ${
+                            daysLeft <= 15 
+                              ? "bg-[#FA5C5C]/50 text-[#2a2421]" 
+                              : "bg-[#9FCB98]/50 text-[#2a2421]"
+                          }`}>
                             {daysLeft === 0 ? t[lang].todayLastDay : status.text}
                           </span>
                         </div>
@@ -883,14 +808,14 @@ export default function ConferFlatDesign() {
                       {/* Sağ Kısım: Son Başvuru Tarihi & Favori Butonu */}
                       <div className="flex items-center justify-end gap-3 relative z-40">
                         <div className="border border-dashed border-[#2a2421]/30 bg-transparent text-[#2a2421] text-[10px] font-fira-semibold px-3 py-1 rounded-xl whitespace-nowrap flex items-center gap-1.5 select-none">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2.5" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
                             className="w-3.5 h-3.5 opacity-80"
                           >
                             <path d="M5 2h14" />
@@ -900,20 +825,21 @@ export default function ConferFlatDesign() {
                           </svg>
                           {formatDate(conf.deadline, lang)}
                         </div>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleFavorite(conf.id);
+                        <button 
+                          onClick={(e) => { 
+                            e.stopPropagation(); 
+                            toggleFavorite(conf.id); 
                           }}
-                          className={`text-lg transition-all duration-300 hover:scale-125 z-40 ${favorites.includes(conf.id) ? 'text-[#5c5043] font-bold drop-shadow-sm' : 'text-stone-400 opacity-60 hover:opacity-100'
-                            }`}
+                          className={`text-lg transition-all duration-300 hover:scale-125 z-40 ${
+                            favorites.includes(conf.id) ? 'text-[#5c5043] font-bold drop-shadow-sm' : 'text-stone-400 opacity-60 hover:opacity-100'
+                          }`}
                           aria-label="Toggle Favorite"
                         >
                           {favorites.includes(conf.id) ? '★' : '☆'}
                         </button>
                       </div>
                     </div>
-
+                    
 
                   </div>
                 );
@@ -941,17 +867,17 @@ export default function ConferFlatDesign() {
           © 2026 Confer. <span className="font-fira-light">{t[lang].subtitle}</span> • {t[lang].footerDesigned}
         </p>
         <div className="flex items-center gap-4 shrink-0 font-fira-semibold">
-          <a
-            href="https://github.com/ammarkilic/Confer"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a 
+            href="https://github.com/ammarkilic/Confer" 
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="hover:text-[#2a2421] transition-colors"
           >
             {t[lang].footerContribute}
           </a>
           <span className="text-stone-300">•</span>
-          <a
-            href="mailto:contact@confer.tracker"
+          <a 
+            href="mailto:contact@confer.tracker" 
             className="hover:text-[#2a2421] transition-colors"
           >
             {t[lang].footerFeedback}
@@ -966,35 +892,38 @@ export default function ConferFlatDesign() {
           setSelectedData(null);
           setOpeningCardId(null);
         }} />
-
+        
         {/* Modal panel */}
-        <div className={`relative w-full max-w-2xl max-h-[90vh] shadow-2xl rounded-3xl md:rounded-[2.5rem] bg-white text-[#2a2421] flex flex-col overflow-hidden transition-all duration-300 ${selectedData ? 'modal-content-animate' : 'scale-95 opacity-0'
-          }`}>
+        <div className={`relative w-full max-w-2xl max-h-[90vh] shadow-2xl rounded-[2.5rem] bg-white text-[#2a2421] flex flex-col overflow-hidden transition-all duration-300 ${
+          selectedData ? 'modal-content-animate' : 'scale-95 opacity-0'
+        }`}>
           {selectedData && (
             <>
               {/* Close Button */}
-              <button
+              <button 
                 onClick={() => {
                   setSelectedData(null);
                   setOpeningCardId(null);
-                }}
-                className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 flex items-center justify-center rounded-full transition-colors z-20 shadow-xs border bg-[#faf9f6] hover:bg-[#2a2421] hover:text-white text-black border-black/5 font-sans text-xs"
+                }} 
+                className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full transition-colors z-20 shadow-xs border bg-[#faf9f6] hover:bg-[#2a2421] hover:text-white text-black border-black/5 font-sans text-xs"
                 aria-label="Close details"
               >
                 ✕
               </button>
 
               {/* Drawer Header */}
-              <div className={`relative px-6 md:px-16 pt-14 md:pt-8 pb-6 bg-gradient-to-br border-b border-t-[12px] transition-colors duration-300 from-white via-[#fcfbfa] to-[#f5f4f0] border-black/5 ${selectedData.style.border}`}>
+              <div className={`relative px-16 pt-8 pb-6 bg-gradient-to-br border-b border-t-[12px] transition-colors duration-300 from-white via-[#fcfbfa] to-[#f5f4f0] border-black/5 ${selectedData.style.border}`}>
                 {/* Mektup Pulu Konseptli Logo (Kesikli Çerçeve ve Posta Damgası) */}
-                <div
-                  className="absolute right-4 md:right-16 w-16 h-20 select-none z-10 overflow-visible top-16 md:top-1/2 -translate-y-0 md:-translate-y-1/2"
-                  style={{
-                    filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))'
+                <div 
+                  className="absolute right-16 w-16 h-20 select-none z-10 overflow-visible"
+                  style={{ 
+                    top: '50%', 
+                    transform: 'translateY(-50%)',
+                    filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))' 
                   }}
                 >
                   {/* Stamp Body with Perforation Mask */}
-                  <div
+                  <div 
                     className="w-full h-full bg-white p-[4px] select-none"
                     style={{
                       mask: 'url(#stamp-mask-aps-drawer)',
@@ -1003,17 +932,17 @@ export default function ConferFlatDesign() {
                   >
                     {/* Inner Stamp Print border and logo */}
                     <div className="w-full h-full border border-stone-200/80 rounded-xs flex items-center justify-center p-[3px]">
-                      <img
-                        src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`}
-                        alt="Postage Stamp Logo"
-                        className="w-full h-full object-contain"
+                      <img 
+                        src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`} 
+                        alt="Postage Stamp Logo" 
+                        className="w-full h-full object-contain" 
                         onError={(e) => {
                           if (e.target.src.includes('clearbit.com')) {
                             e.target.style.display = 'none';
                           } else {
                             e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
                           }
-                        }}
+                        }} 
                       />
                     </div>
                   </div>
@@ -1042,26 +971,17 @@ export default function ConferFlatDesign() {
                   )}
                 </div>
 
-                <div className="flex items-start gap-5 mb-4 pr-24 md:pr-40">
+                <div className="flex items-start gap-5 mb-4 pr-40">
                   <div className="pt-1">
-                    {selectedData.conf.type !== 'konferans' && (
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md font-fira-regular bg-[#2a2421] text-white uppercase tracking-wider">
-                          {lang === 'tr'
-                            ? (selectedData.conf.type === 'atölye' ? 'Atölye' : 'Yaz Okulu')
-                            : (selectedData.conf.type === 'atölye' ? 'Workshop' : 'Summer School')}
-                        </span>
-                      </div>
-                    )}
-                    <h2 className="text-xl md:text-2xl leading-tight mb-1 tracking-tight transition-colors duration-300 text-[#2a2421] font-fira-bold">
+                    <h2 className="text-2xl leading-tight mb-1 tracking-tight transition-colors duration-300 text-[#2a2421] font-fira-bold">
                       {selectedData.conf.title}
                     </h2>
-                    <p className="text-sm font-fira-light opacity-70 mt-0.5 transition-colors duration-300 text-[#2a2421] leading-snug">
+                    <p className="text-sm md:text-base font-fira-light opacity-70 mt-0.5 transition-colors duration-300 text-[#2a2421] leading-snug">
                       {selectedData.conf.organizer}
                     </p>
                   </div>
                 </div>
-
+                
                 {/* Tarihlerin Cümle Yapısı (Using font-fira-regular to match user request) */}
                 <div className="flex flex-col gap-2 mt-4 font-fira-regular text-xs text-[#2a2421] border-t border-stone-200/40 pt-4">
                   <div className="flex items-center gap-2">
@@ -1082,7 +1002,7 @@ export default function ConferFlatDesign() {
               </div>
 
               {/* Drawer Body (CFP Text or Tabbed Layout) */}
-              <div className="px-6 md:px-16 py-6 md:py-8 overflow-y-auto text-base font-normal leading-relaxed flex-grow custom-scrollbar bg-white">
+              <div className="px-16 py-8 overflow-y-auto text-base font-normal leading-relaxed flex-grow custom-scrollbar bg-white">
                 {selectedData.conf.details ? (
                   <div className="flex flex-col h-full">
                     {/* Tab Navigation */}
@@ -1100,10 +1020,11 @@ export default function ConferFlatDesign() {
                             <button
                               key={tabKey}
                               onClick={() => setActiveTab(tabKey)}
-                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${isActive
-                                ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs'
-                                : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
-                                }`}
+                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${
+                                isActive 
+                                  ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs' 
+                                  : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
+                              }`}
                             >
                               {label}
                             </button>
@@ -1122,10 +1043,11 @@ export default function ConferFlatDesign() {
                             <button
                               key={tabKey}
                               onClick={() => setActiveTab(tabKey)}
-                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${isActive
-                                ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs'
-                                : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
-                                }`}
+                              className={`px-2.5 py-1 rounded-md text-xs border transition-all duration-200 ${
+                                isActive 
+                                  ? 'bg-[#2a2421] text-white border-[#2a2421] shadow-xs' 
+                                  : 'bg-transparent text-stone-500 border-transparent hover:text-[#2a2421] hover:bg-stone-50'
+                              }`}
                             >
                               {label}
                             </button>
@@ -1160,85 +1082,53 @@ export default function ConferFlatDesign() {
                           if (activeTab === "dates") {
                             const datesData = selectedData.conf.details.dates;
                             return (
-                              <div className="relative py-4 pb-12 font-fira-regular">
-                                {/* MOBILE TIMELINE */}
-                                <div className="block md:hidden relative pl-6">
-                                  <div className="absolute left-2.5 top-0 bottom-0 w-0.5 bg-stone-200" />
-                                  <div className="space-y-6 relative">
-                                    {datesData.map((d, index) => {
-                                      const itemInfo = d[lang];
-                                      const dateFormatted = formatDate(d.date, lang);
-                                      return (
-                                        <div key={index} className="relative pl-6 min-h-[40px]">
-                                          {/* Dot */}
-                                          <div className={`absolute left-[-21px] top-1.5 w-3.5 h-3.5 rounded-full border-2 bg-white transition-colors duration-300 z-10 ${d.passed
-                                            ? 'border-stone-300 bg-stone-100'
-                                            : 'border-stone-800 bg-[#2a2421] ring-4 ring-stone-100'
-                                            }`} />
-                                          <div>
-                                            <p className="text-[10px] font-semibold text-stone-500">
-                                              {dateFormatted}
-                                            </p>
-                                            <h4 className={`text-xs font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421]'}`}>
-                                              {itemInfo.title}
-                                            </h4>
-                                            <p className={`text-[11px] mt-0.5 ${d.passed ? 'text-stone-400' : 'text-stone-600'}`}>
-                                              {itemInfo.desc}
-                                            </p>
-                                          </div>
+                              <div className="relative py-4 pb-12 ml-0 font-fira-regular">
+                                {/* Central vertical line */}
+                                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-stone-200 transform -translate-x-1/2" />
+                                
+                                <div className="space-y-5 relative">
+                                  {datesData.map((d, index) => {
+                                    const itemInfo = d[lang];
+                                    const dateFormatted = formatDate(d.date, lang);
+                                    const isEven = index % 2 === 0;
+                                    
+                                    return (
+                                      <div key={index} className="relative flex items-center justify-between w-full min-h-[50px]">
+                                        {/* Left Side (Even items show text, Odd items are hidden) */}
+                                        <div className={`w-[44%] text-right pr-4 ${isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
+                                          <p className="text-xs font-semibold text-stone-500">
+                                            {dateFormatted}
+                                          </p>
+                                          <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
+                                            {itemInfo.title}
+                                          </h4>
+                                          <p className={`text-xs mt-0.5 ${d.passed ? 'text-stone-400' : 'text-stone-600'}`}>
+                                            {itemInfo.desc}
+                                          </p>
                                         </div>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
 
-                                {/* DESKTOP TIMELINE */}
-                                <div className="hidden md:block relative">
-                                  {/* Central vertical line */}
-                                  <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-stone-200 transform -translate-x-1/2" />
-                                  <div className="space-y-5 relative">
-                                    {datesData.map((d, index) => {
-                                      const itemInfo = d[lang];
-                                      const dateFormatted = formatDate(d.date, lang);
-                                      const isEven = index % 2 === 0;
-
-                                      return (
-                                        <div key={index} className="relative flex items-center justify-between w-full min-h-[50px]">
-                                          {/* Left Side */}
-                                          <div className={`w-[44%] text-right pr-4 ${isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
-                                            <p className="text-xs font-semibold text-stone-500">
-                                              {dateFormatted}
-                                            </p>
-                                            <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
-                                              {itemInfo.title}
-                                            </h4>
-                                            <p className={`text-xs mt-0.5 ${d.passed ? 'text-stone-400' : 'text-stone-600'}`}>
-                                              {itemInfo.desc}
-                                            </p>
-                                          </div>
-
-                                          {/* Central Dot */}
-                                          <div className={`absolute left-1/2 transform -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 bg-white transition-colors duration-300 z-10 ${d.passed
-                                            ? 'border-stone-300 bg-stone-100'
+                                        {/* Central Dot */}
+                                        <div className={`absolute left-1/2 transform -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 bg-white transition-colors duration-300 z-10 ${
+                                          d.passed 
+                                            ? 'border-stone-300 bg-stone-100' 
                                             : 'border-stone-800 bg-[#2a2421] ring-4 ring-stone-100'
-                                            }`} />
+                                        }`} />
 
-                                          {/* Right Side */}
-                                          <div className={`w-[44%] text-left pl-4 ${!isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
-                                            <p className="text-xs font-semibold text-stone-500">
-                                              {dateFormatted}
-                                            </p>
-                                            <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
-                                              {itemInfo.title}
-                                            </h4>
-                                            <p className={`text-xs mt-0.5 ${d.passed ? 'text-stone-400' : 'text-stone-600'}`}>
-                                              {itemInfo.desc}
-                                            </p>
-                                          </div>
+                                        {/* Right Side (Odd items show text, Even items are hidden) */}
+                                        <div className={`w-[44%] text-left pl-4 ${!isEven ? '' : 'opacity-0 pointer-events-none select-none'}`}>
+                                          <p className="text-xs font-semibold text-stone-500">
+                                            {dateFormatted}
+                                          </p>
+                                          <h4 className={`text-sm font-bold mt-0.5 ${d.passed ? 'text-stone-500 font-medium' : 'text-[#2a2421] font-fira-regular'}`}>
+                                            {itemInfo.title}
+                                          </h4>
+                                          <p className={`text-xs mt-0.5 ${d.passed ? 'text-stone-400' : 'text-stone-600'}`}>
+                                            {itemInfo.desc}
+                                          </p>
                                         </div>
-                                      );
-                                    })}
-                                  </div>
+                                      </div>
+                                    );
+                                  })}
                                 </div>
                               </div>
                             );
@@ -1331,7 +1221,7 @@ export default function ConferFlatDesign() {
                           )}
                         </div>
                       )}
-
+                      
                       {/* Dinamik Dipnot Yapısı */}
                       {(activeTab === 'fees' || activeTab === 'grants') && selectedData.conf.details[activeTab]?.footnote && (
                         <div className="mt-4 pt-4 border-t border-[#2a2421]/10 text-[10px] text-stone-500 font-sans leading-relaxed whitespace-pre-line">
@@ -1361,19 +1251,19 @@ export default function ConferFlatDesign() {
               </div>
 
               {/* Drawer Footer */}
-              <div className="px-6 md:px-16 py-6 border-t flex items-center justify-center gap-3 shrink-0 transition-colors duration-300 bg-[#faf9f6] border-black/5">
-                <a
-                  href={getGoogleCalendarUrl(selectedData.conf)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="px-16 py-6 border-t flex items-center justify-center gap-3 shrink-0 transition-colors duration-300 bg-[#faf9f6] border-black/5">
+                <a 
+                  href={getGoogleCalendarUrl(selectedData.conf)} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="border font-fira-regular py-1.5 px-4 rounded-xl transition-all duration-300 text-xs shadow-xs whitespace-nowrap bg-white border-black/10 hover:bg-[#2a2421] hover:text-white hover:border-[#2a2421] text-[#2a2421] flex-grow text-center max-w-[150px]"
                 >
                   {t[lang].addToCalendar}
                 </a>
-                <a
-                  href={selectedData.conf.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a 
+                  href={selectedData.conf.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="font-fira-regular py-1.5 px-4 rounded-xl transition-all duration-300 text-xs shadow-sm whitespace-nowrap bg-[#2a2421] hover:bg-black text-white flex-grow text-center max-w-[150px]"
                 >
                   {t[lang].goToSite}

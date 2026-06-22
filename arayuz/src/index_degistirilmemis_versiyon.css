@@ -2,10 +2,8 @@
 
 body {
   font-family: 'Fira Sans', sans-serif;
-  background-color: #fefdfb;
-  /* slightly lighter elegant paper background */
-  color: #2a2421;
-  /* ink color */
+  background-color: #fefdfb; /* slightly lighter elegant paper background */
+  color: #2a2421; /* ink color */
 }
 
 ::selection {
@@ -60,16 +58,13 @@ body {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: #fbfaf8;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #e0ddd7;
   border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #2a2421;
 }
@@ -79,7 +74,6 @@ body {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -90,7 +84,6 @@ body {
     transform: translateY(20px) scale(0.98);
     opacity: 0;
   }
-
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
@@ -109,7 +102,6 @@ body {
 summary::-webkit-details-marker {
   display: none !important;
 }
-
 summary {
   list-style: none !important;
   outline: none;
@@ -120,20 +112,22 @@ summary {
 }
 
 .font-typewriter {
-  font-family: 'Special Elite', monospace !important;
+  font-family: 'Fira Sans', sans-serif !important;
 }
 
 /* Vintage Airmail Stripe Border */
 .airmail-stripes {
-  background: repeating-linear-gradient(-45deg,
-      #d9383a,
-      #d9383a 8px,
-      #faf9f6 8px,
-      #faf9f6 16px,
-      #3b5bdb 16px,
-      #3b5bdb 24px,
-      #faf9f6 24px,
-      #faf9f6 32px);
+  background: repeating-linear-gradient(
+    -45deg,
+    #d9383a,
+    #d9383a 8px,
+    #faf9f6 8px,
+    #faf9f6 16px,
+    #3b5bdb 16px,
+    #3b5bdb 24px,
+    #faf9f6 24px,
+    #faf9f6 32px
+  );
 }
 
 /* Curled Tape Effect for Vintage Washi Tapes */
@@ -151,6 +145,6 @@ summary {
   height: 8px;
   background-color: inherit;
   clip-path: polygon(0 0, 0 100%, 100% 100%);
-  filter: brightness(0.7) contrast(1.2) drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.15));
+  filter: brightness(0.7) contrast(1.2) drop-shadow(-1px 1px 1px rgba(0,0,0,0.15));
   pointer-events: none;
 }
