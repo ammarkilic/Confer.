@@ -1047,7 +1047,7 @@ export default function ConferFlatDesign() {
                         height: '48px',
                         top: '12px',
                         left: '-76px',
-                        transform: 'rotate(-12deg)',
+                        transform: 'rotate(-15deg)',
                         filter: 'drop-shadow(0px 1.5px 2px rgba(0, 0, 0, 0.1))'
                       }}
                     >
