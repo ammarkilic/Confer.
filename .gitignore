@@ -3,3 +3,5 @@ arayuz/node_modules/
 arayuz/dist/
 .DS_Store
 *.log
+.env
+.env.*
