@@ -394,6 +394,15 @@ export default function ConferFlatDesign() {
             >
               {t[lang].calendarView}
             </button>
+            <button
+              onClick={() => setViewMode('map')}
+              className={`px-3 py-1 rounded-full text-xs font-fira-semibold transition-all duration-300 ${viewMode === 'map'
+                ? 'bg-[#2a2421] text-white shadow-sm'
+                : 'bg-transparent text-[#5a5451] hover:bg-black/5'
+                }`}
+            >
+              {t[lang].mapView}
+            </button>
           </div>
 
           {/* Language Selector */}
@@ -498,7 +507,7 @@ export default function ConferFlatDesign() {
                 {/* Discipline filter */}
                 <div>
                   <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
+                    <summary className="flex justify-between items-center px-4 py-3 text-xs font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
                       <span>{t[lang].discipline} {selectedTags.length > 0 && `(${selectedTags.length})`}</span>
                       <span className="transition-transform duration-300 group-open:rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -529,7 +538,7 @@ export default function ConferFlatDesign() {
                 {/* Region filter */}
                 <div>
                   <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
+                    <summary className="flex justify-between items-center px-4 py-3 text-xs font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
                       <span>{t[lang].region} {selectedRegions.length > 0 && `(${selectedRegions.length})`}</span>
                       <span className="transition-transform duration-300 group-open:rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -560,7 +569,7 @@ export default function ConferFlatDesign() {
                 {/* Type filter */}
                 <div>
                   <details className="group border rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border-black/5 bg-white">
-                    <summary className="flex justify-between items-center px-4 py-3 text-sm font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
+                    <summary className="flex justify-between items-center px-4 py-3 text-xs font-medium cursor-pointer list-none select-none text-[#2a2421] hover:bg-black/[0.02] font-fira-regular">
                       <span>{t[lang].eventType} {selectedTypes.length > 0 && `(${selectedTypes.length})`}</span>
                       <span className="transition-transform duration-300 group-open:rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -598,7 +607,7 @@ export default function ConferFlatDesign() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="select-custom w-full border rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 font-fira-regular font-normal shadow-sm cursor-pointer bg-white border-black/5 text-[#2a2421] ring-[#2a2421]"
+                    className="select-custom w-full border rounded-2xl px-4 py-3 text-xs focus:outline-none focus:ring-2 font-fira-regular font-normal shadow-sm cursor-pointer bg-white border-black/5 text-[#2a2421] ring-[#2a2421]"
                   >
                     <option value="deadlineAsc">{t[lang].sortDeadlineAsc}</option>
                     <option value="deadlineDesc">{t[lang].sortDeadlineDesc}</option>
@@ -738,6 +747,15 @@ export default function ConferFlatDesign() {
                 </div>
               </div>
             </div>
+          ) : viewMode === 'map' ? (
+            <GlobeView
+              sorted={sorted}
+              lang={lang}
+              setSelectedData={setSelectedData}
+              setOpeningCardId={setOpeningCardId}
+              formatDate={formatDate}
+              retroStyles={retroStyles}
+            />
           ) : (
             /* LİSTE GÖRÜNÜMÜ */
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 w-full pt-4">
@@ -773,8 +791,8 @@ export default function ConferFlatDesign() {
                       {/* Polaroid Fotoğraf Çerçevesi (Tüm Kartlar için) */}
                       <div
                         className={`absolute right-7 top-[36px] w-[96px] h-[118px] bg-white p-1.5 pb-6 shadow-md border border-stone-200/80 rounded-sm z-30 transition-all duration-300 ease-out pointer-events-none select-none flex flex-col justify-between ${openingCardId === conf.id
-                            ? 'translate-y-[-8px] rotate-[8deg]'
-                            : 'translate-y-0 rotate-[6deg] group-hover:translate-y-[-4px] group-hover:rotate-[9deg] group-active:translate-y-[-4px] group-active:rotate-[9deg]'
+                          ? 'translate-y-[-8px] rotate-[8deg]'
+                          : 'translate-y-0 rotate-[6deg] group-hover:translate-y-[-4px] group-hover:rotate-[9deg] group-active:translate-y-[-4px] group-active:rotate-[9deg]'
                           }`}
                         style={{
                           filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))'
@@ -782,16 +800,16 @@ export default function ConferFlatDesign() {
                       >
                         {/* İç Görsel Alanı (Tam Kare Polaroid Oranı) */}
                         <div className={`w-full aspect-square flex items-center justify-center overflow-hidden border border-stone-200/60 ${conf.id === 'pollen-2026' ? 'bg-[#5172b5]' :
-                            conf.id === 'aaa-2026' ? 'bg-[#b20837]' :
-                              conf.id === 'apsa-2026' ? 'bg-[#f5f4f0]' :
-                                conf.id === 'sant-2026' ? 'bg-[#004b89]' :
-                                  'bg-stone-50'
+                          conf.id === 'aaa-2026' ? 'bg-[#b20837]' :
+                            conf.id === 'apsa-2026' ? 'bg-[#f5f4f0]' :
+                              conf.id === 'sant-2026' ? 'bg-[#004b89]' :
+                                'bg-stone-50'
                           }`}>
                           <img
                             src={conf.logo || `https://logo.clearbit.com/${conf.domain}`}
                             alt="Polaroid Inner"
                             className={`w-full h-full object-contain ${conf.id === 'apsa-2026' ? 'p-1.5' :
-                                ['pollen-2026', 'aaa-2026', 'sant-2026'].includes(conf.id) ? 'p-0' : 'p-1'
+                              ['pollen-2026', 'aaa-2026', 'sant-2026'].includes(conf.id) ? 'p-0' : 'p-1'
                               }`}
                             onError={(e) => {
                               if (e.target.src.includes('clearbit.com')) {
@@ -872,8 +890,12 @@ export default function ConferFlatDesign() {
 
                       {/* Sol Kısım: Lokasyon ve Tarih */}
                       <div className="flex flex-col text-left py-1">
-                        <p className="text-xs font-fira-semibold text-[#2a2421] mb-0.5 truncate max-w-[120px] sm:max-w-[150px]">
-                          📍 {displayLocation}
+                        <p className="text-xs font-fira-semibold text-[#2a2421] mb-0.5 truncate max-w-[120px] sm:max-w-[150px] flex items-center gap-1">
+                          <svg className="w-3 h-3 text-[#2a2421]/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          {displayLocation}
                         </p>
                         <p className="text-[10px] font-fira-light text-[#2a2421]/60">
                           {formatDate(conf.date, lang)}
@@ -986,43 +1008,39 @@ export default function ConferFlatDesign() {
 
               {/* Drawer Header */}
               <div className={`relative px-6 md:px-16 pt-14 md:pt-8 pb-6 bg-gradient-to-br border-b border-t-[12px] transition-colors duration-300 from-white via-[#fcfbfa] to-[#f5f4f0] border-black/5 ${selectedData.style.border}`}>
-                {/* Mektup Pulu Konseptli Logo (Kesikli Çerçeve ve Posta Damgası) */}
+                {/* Polaroid Fotoğraf Çerçevesi */}
                 <div
-                  className="absolute right-4 md:right-16 w-16 h-20 select-none z-10 overflow-visible top-16 md:top-1/2 -translate-y-0 md:-translate-y-1/2"
+                  className="absolute right-6 md:right-16 w-[104px] h-[128px] bg-white p-2 pb-6 shadow-md border border-stone-200/80 rounded-sm z-30 select-none flex flex-col justify-between top-16 md:top-1/2 -translate-y-0 md:-translate-y-1/2 rotate-[6deg]"
                   style={{
                     filter: 'drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15))'
                   }}
                 >
-                  {/* Stamp Body with Perforation Mask */}
-                  <div
-                    className="w-full h-full bg-white p-[4px] select-none"
-                    style={{
-                      mask: 'url(#stamp-mask-aps-drawer)',
-                      WebkitMask: 'url(#stamp-mask-aps-drawer)',
+                  {/* Görsel Alanı (Kare) */}
+                  <div className={`w-full aspect-square flex items-center justify-center overflow-hidden border border-stone-200/60 ${selectedData.conf.id === 'pollen-2026' ? 'bg-[#5172b5]' :
+                    selectedData.conf.id === 'aaa-2026' ? 'bg-[#b20837]' :
+                      selectedData.conf.id === 'apsa-2026' ? 'bg-[#f5f4f0]' :
+                        selectedData.conf.id === 'sant-2026' ? 'bg-[#004b89]' :
+                          'bg-stone-50'
+                    }`}>
+                  <img
+                    src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`}
+                    alt="Polaroid Inner Logo"
+                    className={`w-full h-full object-contain ${selectedData.conf.id === 'apsa-2026' ? 'p-1.5' :
+                      ['pollen-2026', 'aaa-2026', 'sant-2026'].includes(selectedData.conf.id) ? 'p-0' : 'p-1'
+                      }`}
+                    onError={(e) => {
+                      if (e.target.src.includes('clearbit.com')) {
+                        e.target.style.display = 'none';
+                      } else {
+                        e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
+                      }
                     }}
-                  >
-                    {/* Inner Stamp Print border and logo */}
-                    <div className="w-full h-full border border-stone-200/80 rounded-xs flex items-center justify-center p-[3px]">
-                      <img
-                        src={selectedData.conf.logo || `https://logo.clearbit.com/${selectedData.conf.domain}`}
-                        alt="Postage Stamp Logo"
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          if (e.target.src.includes('clearbit.com')) {
-                            e.target.style.display = 'none';
-                          } else {
-                            e.target.src = `https://logo.clearbit.com/${selectedData.conf.domain}`;
-                          }
-                        }}
-                      />
-                    </div>
+                  />
                   </div>
-                  {/* Damga Efekti */}
-                  <div className="absolute -bottom-2 -left-2 w-10 h-10 rounded-full border border-black/15 border-dashed pointer-events-none opacity-45 transform -rotate-12 z-20" />
 
-                  {/* Başvuru Kapandı Dairesel Damgası (Stamp) */}
+                  {/* Başvuru Kapandı Damgası (Sola ve aşağı çekildi, aradaki mesafe açıldı) */}
                   {getRemainingDays(selectedData.conf.deadline) < 0 && (
-                    <div className="absolute -top-[14px] -left-10 w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-25 pointer-events-none select-none">
+                    <div className="absolute top-[12px] -left-[76px] w-[48px] h-[48px] rounded-full border-2 border-dashed border-[#c92a2a]/80 bg-transparent flex flex-col items-center justify-center -rotate-[12deg] z-45 pointer-events-none select-none">
                       <span className="text-[8px] font-typewriter text-[#c92a2a] uppercase tracking-wide text-center leading-none">
                         {lang === 'tr' ? (
                           <>
@@ -1042,7 +1060,7 @@ export default function ConferFlatDesign() {
                   )}
                 </div>
 
-                <div className="flex items-start gap-5 mb-4 pr-24 md:pr-40">
+                <div className="flex items-start gap-5 mb-4 pr-[132px] md:pr-[188px]">
                   <div className="pt-1">
                     {selectedData.conf.type !== 'konferans' && (
                       <div className="flex items-center gap-2 mb-1.5">
@@ -1149,7 +1167,10 @@ export default function ConferFlatDesign() {
                                   {sumData.text}
                                 </p>
                                 <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
-                                  <span>📍</span>
+                                  <svg className="w-4 h-4 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  </svg>
                                   <span>
                                     {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                                   </span>
@@ -1323,7 +1344,10 @@ export default function ConferFlatDesign() {
                           </p>
                           {activeTab === 'cfp' && (
                             <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
-                              <span>📍</span>
+                              <svg className="w-4 h-4 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
                               <span>
                                 {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                               </span>
@@ -1351,7 +1375,10 @@ export default function ConferFlatDesign() {
                       </p>
                     </div>
                     <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-1.5 text-sm font-fira-regular text-stone-600">
-                      <span>📍</span>
+                      <svg className="w-4 h-4 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
                       <span>
                         {lang === 'tr' ? selectedData.conf.location : selectedData.conf.locationEn}
                       </span>
@@ -1385,6 +1412,588 @@ export default function ConferFlatDesign() {
         </div>
       </div>
 
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------
+// 3D KÜRESEL DÜNYA HARİTASI (ORTHOGRAPHIC GLOBE VIEW) BİLEŞENİ
+// -----------------------------------------------------------------
+
+const locationCoords = {
+  "esa-2026": [21.01, 52.23],          // Varşova, Polonya
+  "isa-soc-2027": [126.85, 35.16],       // Gwangju, Güney Kore
+  "apa-2026": [-77.04, 38.90],         // Washington, DC, ABD
+  "aps-2026": [2.17, 41.38],           // Barselona, İspanya
+  "icap-2026": [11.25, 43.77],         // Floransa, İtalya
+  "ecpp-2026": [-6.26, 53.35],         // Dublin, İrlanda
+  "epa-2027": [11.25, 43.77],          // Floransa, İtalya
+  "eisa-pec-2026": [-9.14, 38.72],      // Lizbon, Portekiz
+  "esg-2026": [-2.36, 51.38],          // Bath, Birleşik Krallık
+  "apsa-2026": [-71.06, 42.36],        // Boston, ABD
+  "pollen-2026": [2.17, 41.38],        // Barselona, İspanya
+  "ipsa-2027": [12.49, 41.90],         // Roma, İtalya
+  "sfaa-2026": [-106.65, 35.08],       // Albuquerque, ABD
+  "sant-2026": [11.97, 57.70],         // Göteborg, İsveç
+  "easa-2026": [16.92, 52.41],         // Poznan, Polonya
+  "sha-2026": [-74.00, 40.71],         // New York, ABD
+  "aaa-2026": [-90.20, 38.63],         // St. Louis, ABD
+  "acs-crossroads-2026": [-43.94, -19.92], // Belo Horizonte, Brezilya
+  "csa-2027": null,                     // Online
+  "meccsa-2026": [-1.13, 52.63],       // Leicester, Birleşik Krallık
+  "msa-forward-2026": [-58.38, -34.60],  // Buenos Aires, Arjantin
+  "pca-2027": [-71.06, 42.36]          // Boston, ABD
+};
+
+function GlobeView({ sorted, lang, setSelectedData, setOpeningCardId, formatDate, retroStyles }) {
+  const canvasRef = React.useRef(null);
+  const [landPolygons, setLandPolygons] = React.useState([]);
+  const [rotation, setRotation] = React.useState([10, 25]); // [boylam, enlem] başlangıç açısı
+  const [hoveredEvent, setHoveredEvent] = React.useState(null);
+  const [tooltip, setTooltip] = React.useState(null);
+
+  const rotationRef = React.useRef(rotation);
+  rotationRef.current = rotation;
+
+  const isDraggingRef = React.useRef(false);
+  const dragStartRef = React.useRef({ x: 0, y: 0, rot: [0, 0] });
+  const lastInteractionRef = React.useRef(Date.now());
+  const hoveredEventRef = React.useRef(null);
+  const hoveredSideRef = React.useRef(null);
+  const visibleMarkersRef = React.useRef([]);
+
+  // Optimize edilmiş kıta sınırları koordinatlarını yükle
+  React.useEffect(() => {
+    fetch('/land-coordinates.json')
+      .then(res => res.json())
+      .then(data => {
+        setLandPolygons(data);
+      })
+      .catch(err => {
+        console.error("Harita koordinat verisi yüklenemedi:", err);
+      });
+  }, []);
+
+  const resetInteractionTime = () => {
+    lastInteractionRef.current = Date.now();
+  };
+
+  // 5 saniye etkileşim olmadığında kendi etrafında yavaşça dönen otomatik dönüş (auto-spin)
+  React.useEffect(() => {
+    let animationId;
+    const tick = () => {
+      const now = Date.now();
+      if (!isDraggingRef.current && (now - lastInteractionRef.current > 5000)) {
+        setRotation(prev => [prev[0] + 0.08, prev[1]]);
+      }
+      animationId = requestAnimationFrame(tick);
+    };
+    animationId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  // Ortografik 3D Küresel Projeksiyon Matematik Formülü
+  const project = (lon, lat, r, centerLon, centerLat, cx, cy) => {
+    const lonRad = (lon * Math.PI) / 180;
+    const latRad = (lat * Math.PI) / 180;
+    const centerLonRad = (centerLon * Math.PI) / 180;
+    const centerLatRad = (centerLat * Math.PI) / 180;
+
+    const cosC = Math.sin(centerLatRad) * Math.sin(latRad) +
+      Math.cos(centerLatRad) * Math.cos(latRad) * Math.cos(lonRad - centerLonRad);
+
+    if (cosC < 0) return null; // Kürenin arkasında kalan görünmez yüzey
+
+    const x = r * Math.cos(latRad) * Math.sin(lonRad - centerLonRad);
+    const y = r * (Math.cos(centerLatRad) * Math.sin(latRad) -
+      Math.sin(centerLatRad) * Math.cos(latRad) * Math.cos(lonRad - centerLonRad));
+
+    return { x: cx + x, y: cy - y, cosC };
+  };
+
+  // Çizim Döngüsü
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Yüksek çözünürlüklü ekranlar (Retina vb.) için piksel oranı
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    const cx = width / 2;
+    const cy = height / 2;
+    const radius = Math.min(width, height) * 0.47;
+
+    let frameId;
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      const [centerLon, centerLat] = rotationRef.current;
+
+      // 1. 3D Derinlik Hissiyatı Veren Küresel Taban Degradeli Arka Plan
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+      const grad = ctx.createRadialGradient(cx - radius / 4, cy - radius / 4, radius / 10, cx, cy, radius);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(0.7, '#fbfaf8');
+      grad.addColorStop(1, '#e3ded3');
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Küre arkası derinlik gölgesi
+      ctx.shadowColor = 'rgba(42, 36, 33, 0.08)';
+      ctx.shadowBlur = 15;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 8;
+      ctx.strokeStyle = 'rgba(42, 36, 33, 0.35)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      ctx.shadowColor = 'transparent'; // gölgeyi sıfırla
+
+      // Küre sınırları içine kırpalım (graticule ve kıtalar dışarı taşmasın)
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+      ctx.clip();
+
+      // 2. Enlem / Boylam Izgaraları (Graticules)
+      ctx.strokeStyle = 'rgba(42, 36, 33, 0.06)';
+      ctx.lineWidth = 0.8;
+
+      // Paralleller (Enlem Çizgileri)
+      for (let lat = -60; lat <= 60; lat += 20) {
+        ctx.beginPath();
+        let drawing = false;
+        for (let lon = -180; lon <= 180; lon += 5) {
+          const proj = project(lon, lat, radius, centerLon, centerLat, cx, cy);
+          if (proj) {
+            if (!drawing) {
+              ctx.moveTo(proj.x, proj.y);
+              drawing = true;
+            } else {
+              ctx.lineTo(proj.x, proj.y);
+            }
+          } else {
+            drawing = false;
+          }
+        }
+        ctx.stroke();
+      }
+
+      // Meridyenler (Boylam Çizgileri)
+      for (let lon = -180; lon < 180; lon += 30) {
+        ctx.beginPath();
+        let drawing = false;
+        for (let lat = -80; lat <= 80; lat += 5) {
+          const proj = project(lon, lat, radius, centerLon, centerLat, cx, cy);
+          if (proj) {
+            if (!drawing) {
+              ctx.moveTo(proj.x, proj.y);
+              drawing = true;
+            } else {
+              ctx.lineTo(proj.x, proj.y);
+            }
+          } else {
+            drawing = false;
+          }
+        }
+        ctx.stroke();
+      }
+
+      // 3. Kıta Sınırlarının Eskiz/Mürekkep Stiliyle Çizimi
+      ctx.strokeStyle = 'rgba(42, 36, 33, 0.35)';
+      ctx.lineWidth = 0.8;
+      ctx.fillStyle = 'rgba(42, 36, 33, 0.06)'; // Küre renginden bir tık koyu warm ton
+      landPolygons.forEach(polygon => {
+        // Döndürme işlemi: Başlangıç noktasını görünmez (arka yüzeydeki) bir noktaya kaydırıyoruz.
+        // Bu sayede görünür tüm parçalar (segmentler) kesinlikle ufuk çizgisinde başlayıp ufuk çizgisinde biter.
+        let rotatedPolygon = polygon;
+        const firstInvisibleIdx = polygon.findIndex(pt => {
+          const proj = project(pt[0], pt[1], radius, centerLon, centerLat, cx, cy);
+          return !proj;
+        });
+
+        if (firstInvisibleIdx > 0) {
+          const pts = polygon.slice(0, -1);
+          const rotatedPts = pts.slice(firstInvisibleIdx).concat(pts.slice(0, firstInvisibleIdx));
+          rotatedPts.push(rotatedPts[0]);
+          rotatedPolygon = rotatedPts;
+        }
+
+        const segments = [];
+        let currentSeg = [];
+
+        rotatedPolygon.forEach(pt => {
+          const proj = project(pt[0], pt[1], radius, centerLon, centerLat, cx, cy);
+          if (proj) {
+            currentSeg.push({
+              x: proj.x,
+              y: proj.y,
+              lon: pt[0],
+              lat: pt[1]
+            });
+          } else {
+            if (currentSeg.length > 0) {
+              segments.push(currentSeg);
+              currentSeg = [];
+            }
+          }
+        });
+        if (currentSeg.length > 0) {
+          segments.push(currentSeg);
+        }
+
+        segments.forEach(seg => {
+          if (seg.length < 2) return;
+
+          // 1. Doldurma (Fill) için tam kapalı yol oluşturuluyor
+          ctx.beginPath();
+          ctx.moveTo(seg[0].x, seg[0].y);
+          for (let i = 1; i < seg.length; i++) {
+            ctx.lineTo(seg[i].x, seg[i].y);
+          }
+
+          const p0 = seg[0];
+          const pk = seg[seg.length - 1];
+          const dist = Math.sqrt((pk.x - p0.x) ** 2 + (pk.y - p0.y) ** 2);
+
+          const dist0 = Math.sqrt((p0.x - cx) ** 2 + (p0.y - cy) ** 2);
+          const distk = Math.sqrt((pk.x - cx) ** 2 + (pk.y - cy) ** 2);
+          const onEdge = Math.abs(dist0 - radius) < 6 && Math.abs(distk - radius) < 6;
+
+          if (dist > 5 && onEdge) {
+            const angleStart = Math.atan2(pk.y - cy, pk.x - cx);
+            const angleEnd = Math.atan2(p0.y - cy, p0.x - cx);
+
+            let diff = angleEnd - angleStart;
+            while (diff < -Math.PI) diff += 2 * Math.PI;
+            while (diff > Math.PI) diff -= 2 * Math.PI;
+
+            const counterClockwise = diff < 0;
+            ctx.arc(cx, cy, radius, angleStart, angleEnd, counterClockwise);
+          }
+
+          ctx.closePath();
+          ctx.fill();
+
+          // 2. Çerçeve (Stroke) için harita dateline sınırlarını atlayan yol oluşturuluyor
+          ctx.beginPath();
+          let inStrokeSegment = false;
+
+          for (let i = 0; i < seg.length - 1; i++) {
+            const ptA = seg[i];
+            const ptB = seg[i + 1];
+
+            // Eğer iki nokta da yapay dateline boylamı (-180 / 180) üzerindeyse çizmiyoruz
+            const isDateline = Math.abs(ptA.lon) > 179.9 && Math.abs(ptB.lon) > 179.9;
+
+            if (!isDateline) {
+              if (!inStrokeSegment) {
+                ctx.moveTo(ptA.x, ptA.y);
+                inStrokeSegment = true;
+              }
+              ctx.lineTo(ptB.x, ptB.y);
+            } else {
+              inStrokeSegment = false;
+            }
+          }
+
+          // Eğer ufuk çizgisi yayı çizildiyse, bu yayı da çerçeveye dahil et (dateline olmadığı için)
+          if (dist > 5 && onEdge) {
+            const angleStart = Math.atan2(pk.y - cy, pk.x - cx);
+            const angleEnd = Math.atan2(p0.y - cy, p0.x - cx);
+
+            let diff = angleEnd - angleStart;
+            while (diff < -Math.PI) diff += 2 * Math.PI;
+            while (diff > Math.PI) diff -= 2 * Math.PI;
+
+            const counterClockwise = diff < 0;
+            ctx.arc(cx, cy, radius, angleStart, angleEnd, counterClockwise);
+          }
+
+          ctx.stroke();
+        });
+      });
+
+      // Kırpmayı sonlandır
+      ctx.restore();
+
+      // 4. Konferans İşaretçilerinin Çizimi
+      const markers = [];
+      const nowTime = Date.now();
+
+      sorted.forEach((conf, idx) => {
+        const coords = locationCoords[conf.id];
+        if (!coords) return;
+
+        const proj = project(coords[0], coords[1], radius, centerLon, centerLat, cx, cy);
+        if (proj) {
+          markers.push({ conf, x: proj.x, y: proj.y, cosC: proj.cosC, index: idx });
+        }
+      });
+
+      visibleMarkersRef.current = markers;
+
+      markers.forEach(m => {
+        const isHovered = hoveredEventRef.current && hoveredEventRef.current.id === m.conf.id;
+
+        // Yanıp sönen pulsing efekt dairesi
+        const pulseRadius = 5 + (nowTime % 1200) / 100;
+        const pulseOpacity = 1 - (nowTime % 1200) / 1200;
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, pulseRadius, 0, 2 * Math.PI);
+        ctx.strokeStyle = `rgba(224, 123, 148, ${pulseOpacity * 0.75})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Merkezdeki işaretçi dairesi
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, isHovered ? 6 : 4.5, 0, 2 * Math.PI);
+        ctx.fillStyle = isHovered ? '#e07b94' : '#ff9ab3';
+        ctx.fill();
+        ctx.strokeStyle = '#2a2421';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        if (isHovered) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.strokeStyle = 'rgba(42, 36, 33, 0.45)';
+          ctx.lineWidth = 1;
+          ctx.setLineDash([3, 3]);
+
+          const isMobile = window.innerWidth < 768;
+          let targetX = m.x;
+          let targetY = m.y;
+
+          if (isMobile) {
+            targetX = width / 2;
+            targetY = height - 10;
+          } else {
+            const side = hoveredSideRef.current || (m.x < cx ? 'left' : 'right');
+            if (side === 'left') {
+              targetX = 15;
+              targetY = height / 2;
+            } else {
+              targetX = width - 15;
+              targetY = height / 2;
+            }
+          }
+
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(targetX, targetY);
+          ctx.stroke();
+
+          // Sabitleme noktası dairesi
+          ctx.beginPath();
+          ctx.arc(targetX, targetY, 3, 0, 2 * Math.PI);
+          ctx.fillStyle = '#ff9ab3';
+          ctx.fill();
+          ctx.strokeStyle = '#2a2421';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.restore();
+        }
+      });
+
+      frameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [landPolygons, sorted]);
+
+  // Sürükle ve Döndür Etkileşimi
+  const handlePointerDown = (e) => {
+    isDraggingRef.current = true;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    dragStartRef.current = {
+      x: clientX,
+      y: clientY,
+      rot: [...rotation]
+    };
+    resetInteractionTime();
+  };
+
+  const handlePointerMove = (e) => {
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
+    if (isDraggingRef.current) {
+      const dx = clientX - dragStartRef.current.x;
+      const dy = clientY - dragStartRef.current.y;
+
+      const sensitivity = 0.25;
+      const newLon = dragStartRef.current.rot[0] - dx * sensitivity;
+      const newLat = Math.max(-80, Math.min(80, dragStartRef.current.rot[1] + dy * sensitivity));
+
+      setRotation([newLon, newLat]);
+      resetInteractionTime();
+    }
+
+    const canvas = canvasRef.current;
+    if (!canvas || isDraggingRef.current) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    let found = null;
+    let minDistance = 10;
+
+    visibleMarkersRef.current.forEach(m => {
+      const dist = Math.sqrt((m.x - x) ** 2 + (m.y - y) ** 2);
+      if (dist < minDistance) {
+        found = m;
+      }
+    });
+
+    if (found) {
+      canvas.style.cursor = 'pointer';
+      hoveredEventRef.current = found.conf;
+      setHoveredEvent(found.conf);
+
+      setTooltip(prev => {
+        const side = (prev && prev.event.id === found.conf.id)
+          ? prev.side
+          : (found.x < rect.width / 2 ? 'left' : 'right');
+
+        hoveredSideRef.current = side;
+
+        return {
+          event: found.conf,
+          x: found.x,
+          y: found.y - 12,
+          cx: rect.width / 2,
+          side: side,
+          style: retroStyles[found.index % retroStyles.length]
+        };
+      });
+    } else {
+      canvas.style.cursor = 'default';
+      hoveredEventRef.current = null;
+      setHoveredEvent(null);
+      setTooltip(null);
+      hoveredSideRef.current = null;
+    }
+  };
+
+  const handlePointerUp = () => {
+    isDraggingRef.current = false;
+    resetInteractionTime();
+  };
+
+  const handleMarkerClick = () => {
+    if (hoveredEvent) {
+      const confIndex = sorted.findIndex(c => c.id === hoveredEvent.id);
+      const style = retroStyles[confIndex >= 0 ? confIndex % retroStyles.length : 0];
+      setOpeningCardId(hoveredEvent.id);
+      setTimeout(() => {
+        setSelectedData({ conf: hoveredEvent, style });
+      }, 400);
+      setTooltip(null);
+      setHoveredEvent(null);
+      hoveredEventRef.current = null;
+      hoveredSideRef.current = null;
+    }
+  };
+
+  return (
+    <div className="w-full flex flex-col items-center justify-center p-2 relative bg-white/40 border border-black/5 rounded-3xl shadow-sm mt-4 select-none min-h-[480px] md:min-h-[580px] overflow-hidden">
+
+      {/* Harita Başlığı Bilgisi */}
+      <div className="absolute top-4 left-6 pointer-events-none select-none text-left z-10">
+        <h3 className="text-sm font-fira-bold tracking-wider text-[#2a2421] mb-0.5">
+          {lang === 'tr' ? 'Etkileşimli küre' : 'Interactive globe'}
+        </h3>
+        <p className="text-[10px] font-fira-light text-stone-500 max-w-[200px] leading-snug">
+          {lang === 'tr'
+            ? 'Dünyayı döndürmek için sürükleyin, konferans detayları için noktalara tıklayın.'
+            : 'Drag to rotate the globe, click on dots to view conference details.'}
+        </p>
+      </div>
+
+      {/* Küre Canvas Alanı */}
+      <canvas
+        ref={canvasRef}
+        onMouseDown={handlePointerDown}
+        onMouseMove={handlePointerMove}
+        onMouseUp={handlePointerUp}
+        onMouseLeave={handlePointerUp}
+        onTouchStart={handlePointerDown}
+        onTouchMove={handlePointerMove}
+        onTouchEnd={handlePointerUp}
+        onClick={handleMarkerClick}
+        className="w-full max-w-[500px] aspect-square cursor-grab active:cursor-grabbing pointer-events-auto"
+        style={{ touchAction: 'none' }}
+      />
+
+
+      {/* Bilgi Kartı Tooltip (Glassmorphism) */}
+      {tooltip && (
+        <div
+          className={`absolute z-40 pt-4 px-4 pb-3 w-60 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/80 shadow-lg pointer-events-none transition-all duration-150 flex flex-col gap-1.5 text-left
+            ${window.innerWidth < 768
+              ? 'left-1/2 bottom-4 -translate-x-1/2'
+              : tooltip.side === 'left'
+                ? 'left-6 top-1/2 -translate-y-1/2'
+                : 'right-6 top-1/2 -translate-y-1/2'
+            }`}
+          style={{
+            filter: 'drop-shadow(0px 4px 10px rgba(0,0,0,0.12))'
+          }}
+        >
+
+          {/* İçerik */}
+          <div className="flex flex-col gap-1.5 select-none pointer-events-none text-left">
+            <div className="flex flex-wrap gap-1">
+              {(lang === 'tr' ? tooltip.event.tags : tooltip.event.tagsEn).map(tag => (
+                <span
+                  key={tag}
+                  className={`text-[9px] px-1.5 py-0.5 rounded font-fira-regular ${tooltip.style.tagBg} ${tooltip.style.text}`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h4 className="text-xs font-fira-bold leading-snug text-[#2a2421] line-clamp-2">
+              {tooltip.event.title}
+            </h4>
+            <p className="text-[9px] font-fira-light text-stone-500 truncate">
+              {tooltip.event.organizer}
+            </p>
+            <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-stone-100 text-[9px] text-[#2a2421]">
+              <span className="truncate max-w-[110px] flex items-center gap-1">
+                <svg className="w-2.5 h-2.5 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {lang === 'tr' ? tooltip.event.location : tooltip.event.locationEn}
+              </span>
+              <span className="font-semibold text-stone-600 flex items-center gap-1">
+                <svg className="w-2.5 h-2.5 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {formatDate(tooltip.event.deadline, lang)}
+              </span>
+            </div>
+            <div className="text-[8px] font-fira-semibold text-center text-[#ff9ab3] mt-1.5 animate-pulse">
+              {lang === 'tr' ? 'Detayları görmek için tıklayın' : 'Click to view details'}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
