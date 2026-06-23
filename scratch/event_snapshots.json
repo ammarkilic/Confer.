@@ -1,0 +1,213 @@
+{
+  "bath-esg-2026": {
+    "id": "bath-esg-2026",
+    "type": "konferans",
+    "title": "2026 Bath Conference on Earth System Governance",
+    "organizer": "University of Bath, Earth System Governance Project",
+    "domain": "Earth System Governance, Sustainability, Planetary Integrity",
+    "link": "https://www.earthsystemgovernance.org/2026-bath/",
+    "location": "Bath, İngiltere, Birleşik Krallık",
+    "locationEn": "Bath, England, United Kingdom",
+    "region": "Bath, İngiltere",
+    "regionEn": "Bath, England",
+    "tagsEn": [
+      "Conference",
+      "Earth System Governance",
+      "Sustainability",
+      "Planetary Integrity",
+      "Environmental Governance"
+    ],
+    "tags": [
+      "Konferans",
+      "Dünya Sistemi Yönetimi",
+      "Sürdürülebilirlik",
+      "Gezegensel Bütünlük",
+      "Çevre Yönetimi"
+    ],
+    "date": "2026-09-08",
+    "deadline": "2026-08-15",
+    "grants": true,
+    "details": {
+      "type": "custom",
+      "summary": {
+        "tr": {
+          "lead": "2026 Bath Dünya Sistemi Yönetişimi Konferansı'na hoş geldiniz!",
+          "text": "Bath Üniversitesi, Dünya Sistemi Yönetişimi Projesi ile birlikte 2026 Konferansı'na ev sahipliği yapmaktan gurur duyar. 7-11 Eylül 2026 tarihlerinde Birleşik Krallık, İngiltere'nin tarihi ve UNESCO Dünya Mirası alanı olan Bath şehrinde gerçekleşecek olan konferans, seçili oturumların sanal erişim ve katılım için de mevcut olmasıyla esas olarak yüz yüze yapılacaktır. Bu etkinlik, 2007'den beri düzenlenen küresel Dünya Sistemi Yönetişimi konferanslarının uzun bir geleneğini sürdürmektedir. 2026 Bath Konferansı'nın teması \"Gezegensel bütünlük için adil ve sürdürülebilir gelecekler inşa etmek\"tir. Konferans, Dünya Sistemi Yönetişimi Projesi'nin beş analitik merceği ve dünya sistemi yönetişiminin geleceğine odaklanan altıncı bir akış dahil olmak üzere altı ana akış etrafında düzenlenecektir. Ayrıca, 2026 Bath Konferansı, Dünya Sistemi Yönetişimi Projesi için yeni bir on yıllık plan geliştirme sürecinin başlangıcı olacaktır."
+        },
+        "en": {
+          "lead": "Welcome to the 2026 Bath Conference on Earth System Governance!",
+          "text": "The University of Bath, together with the Earth System Governance Project, is proud to host the 2026 Conference. Taking place on 7-11 September 2026 in the historic city of Bath, a UNESCO World Heritage Site in England, United Kingdom, the conference will be held primarily in person, with selected sessions available for virtual access and participation. This event continues a long tradition of global Earth System Governance conferences, held since 2007. The theme of the 2026 Bath Conference is “Building just and sustainable futures for planetary integrity“. It will be organized around six streams, including the five analytical lenses of the Earth System Governance Project and a sixth stream on the future of earth system governance, for which participants are invited to assess existing gaps and prospective reforms for improving sustainability governance at multiple scales. The 2026 Bath Conference will also mark the beginning to develop a new ten-year plan for the Earth System Governance Project."
+        }
+      },
+      "dates": [
+        {
+          "date": "2026-01-15",
+          "tr": {
+            "title": "Tüm başvurular için son tarih",
+            "desc": "Bildiri çağrısı ve tüm başvurular için son tarih."
+          },
+          "en": {
+            "title": "Deadline for all submissions",
+            "desc": "Deadline for the Call for Papers and all submissions."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-03-16",
+          "tr": {
+            "title": "Kabul bildirimi",
+            "desc": "Başvuruların kabul edildiğine dair bildirim tarihi."
+          },
+          "en": {
+            "title": "Notification of acceptance",
+            "desc": "Notification date for acceptance of submissions."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-04-30",
+          "tr": {
+            "title": "Seyahat bursu başvuruları için son tarih",
+            "desc": "Seyahat bursu başvurularının kabulü için son gün."
+          },
+          "en": {
+            "title": "Deadline for travel grant applications",
+            "desc": "Last day to apply for travel grants."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-05-22",
+          "tr": {
+            "title": "Erken kayıt için son tarih",
+            "desc": "Erken kayıt indiriminden yararlanmak için son gün."
+          },
+          "en": {
+            "title": "Deadline for early bird registration",
+            "desc": "Last day for early bird registration (extended)."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-07-03",
+          "tr": {
+            "title": "Sunum yapacaklar için kayıt son tarihi",
+            "desc": "Konuşmacıların kayıt yaptırması için son gün."
+          },
+          "en": {
+            "title": "Deadline for registration of presenters",
+            "desc": "Last day for presenters to register."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-07-15",
+          "tr": {
+            "title": "Oran R. Young Ödülü için son tarih",
+            "desc": "Oran R. Young Ödülü başvuruları için son gün."
+          },
+          "en": {
+            "title": "Deadline for the Oran R. Young Prize",
+            "desc": "Last day to submit for the Oran R. Young Prize."
+          },
+          "passed": true
+        },
+        {
+          "date": "2026-08-07",
+          "tr": {
+            "title": "Tüm kayıtlar için son tarih",
+            "desc": "Konferansa kayıt yaptırmak için genel son gün."
+          },
+          "en": {
+            "title": "Deadline for all registration",
+            "desc": "General deadline for all conference registrations."
+          },
+          "passed": false
+        },
+        {
+          "date": "2026-08-15",
+          "tr": {
+            "title": "Tam bildiri sunumu için son tarih",
+            "desc": "Tam bildirilerin gönderilmesi için son gün."
+          },
+          "en": {
+            "title": "Deadline for full paper submission",
+            "desc": "Last day to submit full papers."
+          },
+          "passed": false
+        },
+        {
+          "date": "2026-09-07",
+          "tr": {
+            "title": "Erken Kariyer Günü",
+            "desc": "Konferansın başlangıcında genç araştırmacılara özel gün."
+          },
+          "en": {
+            "title": "Early Career Day",
+            "desc": "Special day for early career researchers at the start of the conference."
+          },
+          "passed": false
+        },
+        {
+          "date": "2026-09-08",
+          "tr": {
+            "title": "Ana Konferans",
+            "desc": "Konferansın ana oturumlarının düzenleneceği tarihler."
+          },
+          "en": {
+            "title": "Main Conference",
+            "desc": "Dates for the main conference sessions."
+          },
+          "passed": false
+        },
+        {
+          "date": "2026-09-11",
+          "tr": {
+            "title": "Toplantı Günü",
+            "desc": "Konferansın kapanış ve ek toplantılarının yapılacağı gün."
+          },
+          "en": {
+            "title": "Meeting Day",
+            "desc": "Day for closing and additional meetings."
+          },
+          "passed": false
+        }
+      ],
+      "fees": {
+        "tr": [],
+        "en": [],
+        "footnote": {
+          "tr": "Ücret detayları belirtilmemiştir, sadece kayıt tarihleri verilmiştir.",
+          "en": "Fee details are not specified, only registration deadlines are provided."
+        }
+      },
+      "grants": [
+        {
+          "tr": {
+            "title": "Seyahat Bursları",
+            "desc": "Konferans için seyahat bursları mevcuttu, ancak başvuru tarihi (30 Nisan 2026) geçmiştir."
+          },
+          "en": {
+            "title": "Travel Grants",
+            "desc": "Travel grants were available for the conference, but the application deadline (30 April 2026) has passed."
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "tr": {
+            "title": "Bildiri Sunumu",
+            "desc": "Bildiri çağrısı 15 Ocak 2026 tarihinde kapanmıştır. Konferans hibrit olarak düzenlenecek olup, seçili oturumlara sanal erişim ve katılım imkanı sunulacaktır."
+          },
+          "en": {
+            "title": "Paper Submission",
+            "desc": "The Call for Papers closed on 15 January 2026. The conference will be held primarily in person, with selected sessions available for virtual access and participation."
+          }
+        }
+      ]
+    },
+    "changeLog": [
+      "New event discovered"
+    ]
+  }
+}
